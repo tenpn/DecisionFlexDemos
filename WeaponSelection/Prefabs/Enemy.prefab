@@ -12,6 +12,7 @@ GameObject:
   - 135: {fileID: 13500000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -66,7 +67,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9bfd72d333b4963b202d3f57fe63d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_waypoints: []
+  m_waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_smoothTime: 1
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a9a4c294af542878f9178210778bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
