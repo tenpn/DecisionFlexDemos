@@ -5,8 +5,6 @@ using System.Reflection;
 
 namespace TenPN.DecisionFlex.Demos
 {
-
-    [AddComponentMenu("Weapon Choice/Inventory")]
     public class Inventory : MonoBehaviour
     {
         //////////////////////////////////////////////////

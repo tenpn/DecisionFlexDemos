@@ -4,8 +4,6 @@ using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
-
-    [AddComponentMenu("Weapon Choice/Shotgun")]
     public class ShotgunAction : UtilityAction
     {
         public override void Perform(IConsiderationContext context)
