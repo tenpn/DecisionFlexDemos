@@ -4,6 +4,8 @@ namespace TenPN.DecisionFlex.Demos
 {
     public class FollowWaypoints : MonoBehaviour
     {
+        public bool IsPaused { get; set; }
+
         //////////////////////////////////////////////////
 
         [SerializeField] Transform[] m_waypoints;
@@ -16,6 +18,11 @@ namespace TenPN.DecisionFlex.Demos
 
         void Update()
         {
+            if (IsPaused)
+            {
+                return;
+            }
+
             var targetPos = m_waypoints[m_currentWaypoint].position;
             
             var newPos = Vector3.SmoothDamp(transform.position, targetPos, 
