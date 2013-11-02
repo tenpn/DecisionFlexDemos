@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_comment: 
-  m_scalar: .699999988
+  m_scalar: .649999976
 --- !u!1 &142490800
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,22 +253,17 @@ MonoBehaviour:
   m_responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 19.0946426
+    - time: 2.5
       value: -3.96966934e-05
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 30.0114956
+    - time: 6.5
       value: 1.00003982
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 44.205246
-      value: .758904636
-      inSlope: -.0571603924
-      outSlope: -.0571603924
-      tangentMode: 10
-    - time: 52.0214195
+    - time: 14
       value: -.00185880973
       inSlope: 0
       outSlope: 0
@@ -936,12 +931,12 @@ MonoBehaviour:
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 6.71234703
-      value: .718149245
-      inSlope: -.130672917
-      outSlope: -.130672917
+    - time: 3.44200492
+      value: .723648608
+      inSlope: -.21595791
+      outSlope: -.21595791
       tangentMode: 10
-    - time: 9.98624611
+    - time: 5.5
       value: 7.40401447e-08
       inSlope: 0
       outSlope: 0
