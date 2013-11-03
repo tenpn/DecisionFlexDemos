@@ -800,7 +800,7 @@ GameObject:
   - 114: {fileID: 941535530}
   - 114: {fileID: 941535528}
   m_Layer: 0
-  m_Name: WeaponSelection
+  m_Name: WeaponSelectionWithDecisionFlex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,6 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738bdc35bf87c457db3748e08381cc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isZeroScoreIgnored: 1
 --- !u!1 &1020497184
 GameObject:
   m_ObjectHideFlags: 0
