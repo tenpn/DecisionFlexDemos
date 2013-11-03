@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - time: .5
       value: 1
       inSlope: 0
       outSlope: 0
