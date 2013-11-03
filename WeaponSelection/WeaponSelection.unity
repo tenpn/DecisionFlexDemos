@@ -139,7 +139,7 @@ GameObject:
   - 4: {fileID: 109457725}
   - 114: {fileID: 109457726}
   m_Layer: 0
-  m_Name: Downscale
+  m_Name: OnlyWhenNoLocalDanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ GameObject:
   - 4: {fileID: 148536808}
   - 114: {fileID: 148536809}
   m_Layer: 0
-  m_Name: EnemyDistance
+  m_Name: PreferSnipingFarEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,7 +893,7 @@ GameObject:
   - 4: {fileID: 1020497185}
   - 114: {fileID: 1020497186}
   m_Layer: 0
-  m_Name: EnemyDistance
+  m_Name: PreferShotgunningNearEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1336,7 +1336,7 @@ GameObject:
   - 4: {fileID: 1901141115}
   - 114: {fileID: 1901141116}
   m_Layer: 0
-  m_Name: EnemyDistance
+  m_Name: OnlyStabNearEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1369,18 +1369,18 @@ MonoBehaviour:
   m_responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: .5
+    - time: 1.20000005
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: .998562932
-      value: .020487722
+    - time: 1.99800313
+      value: .0223462768
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - time: 3.00470996
-      value: -.00185855373
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1438,6 +1438,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1990002957}
   - {fileID: 1901141115}
   m_Father: {fileID: 941535525}
 --- !u!114 &1936101058
@@ -1552,6 +1553,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a9a4c294af542878f9178210778bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1990002956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1990002957}
+  - 114: {fileID: 1990002958}
+  m_Layer: 0
+  m_Name: LastResort
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990002957
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1990002956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.185134411, y: -3.69583607, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1936101057}
+--- !u!114 &1990002958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1990002956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228b78daaff924fbeb4e848b1e7c16cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_comment: 
+  m_scalar: .75
 --- !u!1 &2085202781
 GameObject:
   m_ObjectHideFlags: 0
