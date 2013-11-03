@@ -4,7 +4,7 @@ using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    public class WeaponAction : UtilityAction
+    public class WeaponAction : Action
     {
         public override void Perform(IConsiderationContext context)
         {

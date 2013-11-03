@@ -5,7 +5,7 @@ using System;
 namespace TenPN.DecisionFlex.Demos
 {
 
-    public class ModifyAttribute : UtilityAction
+    public class ModifyAttribute : Action
     {
         public override void Perform(IConsiderationContext context)
         {

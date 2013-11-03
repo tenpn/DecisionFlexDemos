@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+using Action = System.Action;
+
 namespace TenPN.DecisionFlex.Demos
 {
     // given text, start T, end T will move label from start to end
@@ -23,7 +25,7 @@ namespace TenPN.DecisionFlex.Demos
         [SerializeField] float m_initialPause = 1f;
 
         int m_nextID = 0;
-        Dictionary<int, Action> m_renderers = new Dictionary<int, Action>();
+        Dictionary<int, System.Action> m_renderers = new Dictionary<int, System.Action>();
 
         //////////////////////////////////////////////////
 
@@ -53,7 +55,7 @@ namespace TenPN.DecisionFlex.Demos
             Vector3 renderWorldPos = fromPos;
             Vector3 velocity = Vector3.zero;
 
-            Action renderer = () => {
+            System.Action renderer = () => {
                 var labelSize = GUI.skin.box.CalcSize(new GUIContent(label));
 
                 var renderScreenPos = Camera.main.WorldToScreenPoint(renderWorldPos);
