@@ -69,15 +69,14 @@ namespace TenPN.DecisionFlex.Demos
 
         private void OnGUI()
         {
-            var soldierScreenPos = Camera.main.WorldToScreenPoint(transform.position);
-            soldierScreenPos.y = Screen.height - soldierScreenPos.y;
-
             float inventoryUIHeight = 80f;
             float inventoryUIWidth = 200f;
-            float inventoryUIRightOffset = 30f;
+            float inventoryUIPadding = 10f;
 
-            var inventoryUIRect = new Rect(soldierScreenPos.x + inventoryUIRightOffset, 
-                                           soldierScreenPos.y - inventoryUIHeight,
+            float inventoryUIRectX = Screen.width - inventoryUIWidth - inventoryUIPadding;
+            float inventoryUIRectY = inventoryUIPadding;
+
+            var inventoryUIRect = new Rect(inventoryUIRectX, inventoryUIRectY,
                                            inventoryUIWidth, inventoryUIHeight);
 
             GUILayout.BeginArea(inventoryUIRect, GUI.skin.box);
