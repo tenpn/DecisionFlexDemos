@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014e1c319854d4548af55693382c094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: Reloading the shutgun takes a long time so prefer other weapons if we're
+    getting low on ammo.
   m_contextName: shotgunShells
   m_responseCurve:
     serializedVersion: 2
@@ -167,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228b78daaff924fbeb4e848b1e7c16cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: "Sniping while an enemy is nearby is bad. \n\nSo downvote sniping low
+    enough that other options can kick in."
   m_scalar: .649999976
 --- !u!1 &142490800
 GameObject:
@@ -248,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c022da5e034f0e9704e6e2235ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: Only distant enemies score well for sniping
   m_contextName: EnemyDistance
   m_responseCurve:
     serializedVersion: 2
@@ -972,7 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c022da5e034f0e9704e6e2235ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: Shotguns become uneffective beyond some range.
   m_contextName: EnemyDistance
   m_responseCurve:
     serializedVersion: 2
@@ -1150,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc336269c90a44ce8076fd1cce97be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: If we have just one round to fire, we can shoot the sniper rifle.
   m_contextName: fiftyCalRounds
   m_evaluationType: 1
   m_gateValue: 0
@@ -1416,7 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c022da5e034f0e9704e6e2235ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: Knife only scores highly when enemy is very near
   m_contextName: EnemyDistance
   m_responseCurve:
     serializedVersion: 2
@@ -1738,7 +1740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228b78daaff924fbeb4e848b1e7c16cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: 
+  m_comment: "Downvotes knife whatever the other considerations do, \nso if there's
+    any other decent option we'll take it."
   m_scalar: .75
 --- !u!1 &2085202781
 GameObject:
