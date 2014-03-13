@@ -9,9 +9,11 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
 
         int m_currentScreenIndex = 0;
         IList<WalkthroughScreen> m_screens;
+        bool m_isMaximised = true;
 
         [SerializeField] float m_widthProp = 0.75f;
         [SerializeField] float m_heightProp = 0.75f;
+        [SerializeField] float m_minimisedHeight = 30f;
 
         //////////////////////////////////////////////////
 
@@ -21,6 +23,38 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
         }
 
         private void OnGUI()
+        {
+            if (m_isMaximised)
+            {
+                RenderMaximisedDialog();
+            }
+            else
+            {
+                RenderMinimisedDialog();
+            }
+        }
+
+        private void RenderMinimisedDialog()
+        {
+            float bgWidth = Screen.width * m_widthProp;
+            float bgLeftX = (Screen.width - bgWidth) * 0.5f;
+            float bgTopY = Screen.height - m_minimisedHeight;
+            var minimisedRect = new Rect(bgLeftX, bgTopY,
+                                         bgWidth, m_minimisedHeight);
+            GUILayout.BeginArea(minimisedRect, GUI.skin.box);
+            
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Maximise"))
+            {
+                m_isMaximised = true;
+            }
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+            
+            GUILayout.EndArea();
+        }
+
+        private void RenderMaximisedDialog()
         {
             float bgWidth = Screen.width * m_widthProp;
             float bgLeftX = (Screen.width - bgWidth) * 0.5f;
@@ -41,11 +75,17 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             
             GUILayout.EndVertical();
             GUILayout.EndArea();
+
         }
 
         private void RenderControls()
         {
             GUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Minimise"))
+            {
+                m_isMaximised = false;
+            }
 
             GUILayout.FlexibleSpace();
             
