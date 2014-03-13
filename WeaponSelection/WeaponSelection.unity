@@ -130,6 +130,60 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &36005468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 36005469}
+  - 114: {fileID: 36005470}
+  m_Layer: 0
+  m_Name: 23. WeaponAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &36005469
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 36005468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &36005470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 36005468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: WeaponAction
+  m_dialog: 'There is one WeaponAction behaviour on each action gameobject. It is
+    responsible for enacting the decided-upon action through WeaponAction.Perform().
+
+
+    The action is passed the consideration context that scored so highly. In this
+    case that represents the enemy to target. The WeaponAction asks the context for
+    the transform of the target and fires.
+
+
+    In this example, there is only one WeaponAction class. But it''s feasible to have
+    many actions, each with custom code.
+
+
+
+'
 --- !u!1 &109457724
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +326,103 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &306984546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 306984547}
+  - 114: {fileID: 306984548}
+  m_Layer: 0
+  m_Name: 20. CustomCode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &306984547
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306984546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &306984548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 306984546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: User Code
+  m_dialog: 'Very little custom game-side code was required to make the solider simulation
+    work with DecisionFlex.
+
+
+    Let''s talk through the code in detail.'
+--- !u!1 &354386407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 354386408}
+  - 114: {fileID: 354386409}
+  m_Layer: 0
+  m_Name: 21. WeaponSelectionConsiderationContextFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &354386408
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354386407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &354386409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354386407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: WeaponSelectionConsiderationContextFactory
+  m_dialog: 'A ConsiderationContext is a database of knowledge useful to the decision.
+    It is used directly by considerations.
+
+
+    WeaponSelectionConsiderationContextFactory is responsible for making the ConsiderationContext
+    for the weapon selection decision. In fact it makes one context per enemy per
+    decision, because we are scoring the best weapon/target pair.
+
+
+    Each enemy consideration also has a link to a master context, which contains the
+    soldier''s inventory contents.
+
+
+'
 --- !u!1 &418616767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,6 +2100,48 @@ MonoBehaviour:
   m_comment: "Downvotes knife whatever the other considerations do, \nso if there's
     any other decent option we'll take it."
   m_scalar: .75
+--- !u!1 &2072973509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2072973510}
+  - 114: {fileID: 2072973511}
+  m_Layer: 0
+  m_Name: 22. Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2072973510
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072973509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &2072973511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072973509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Inventory
+  m_dialog: The Inventory class manages ammo counts, but is also responsible, via
+    Inventory.PopulateMasterConsiderationContext(), for making ammo counts available
+    to the considerations.
 --- !u!1 &2085202781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +2215,10 @@ Transform:
   - {fileID: 641774002}
   - {fileID: 1880500681}
   - {fileID: 1083432732}
+  - {fileID: 306984547}
+  - {fileID: 354386408}
+  - {fileID: 2072973510}
+  - {fileID: 36005469}
   m_Father: {fileID: 0}
 --- !u!114 &2088936471
 MonoBehaviour:
