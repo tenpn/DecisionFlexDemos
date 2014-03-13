@@ -1594,8 +1594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_title: 
-  m_dialog: 
+  m_title: Controls
+  m_dialog: "You can pause the movement of targets at any time.\n\nSliders in the
+    top-right change the solider's ammo count. \n\nTry pausing the targets and adjusting
+    ammo to see how it changes the target selection decision."
 --- !u!4 &1943972491
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,8 +1652,13 @@ MonoBehaviour:
     use on what taget.
 
 
-    He has a knife that only works at short range, a shotgunt that is only effective
-    to a limited range, and a sniper rifle that is only effective at long range.'
+    The solider has a knife that only works at short range, a shotgunt that is only
+    effective to a limited range, and a sniper rifle that is only effective at long
+    range.
+
+
+    The solider constantly evaluates remaining ammo and enemy positions to find a
+    weapon/pair target representing the best decision right now.'
 --- !u!1 &1990002956
 GameObject:
   m_ObjectHideFlags: 0
