@@ -502,8 +502,8 @@ MonoBehaviour:
   m_dialog: 'The knife action has two considerations, OnlyStabNearEnemies and LastResort.
 
 
-    LastResort is a scalar consideration. It ensures the knife action is never scored
-    more than a maximum value.
+    LastResort is a scalar consideration. It effectively ensures the knife action
+    is never scored more than a maximum value.
 
 
     This allows firearms to always be used if available.
@@ -1080,6 +1080,63 @@ Transform:
   - {fileID: 740628009}
   - {fileID: 941535525}
   m_Father: {fileID: 0}
+--- !u!1 &1083432731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1083432732}
+  - 114: {fileID: 1083432733}
+  m_Layer: 0
+  m_Name: 13. Sniper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1083432732
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1083432731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &1083432733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1083432731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: SniperAction
+  m_dialog: 'The sniper action has three considerations: HasAmmo, OnlyWhenNoLocalDanger,
+    and PreferSnipingFarEnemies.
+
+
+    HasAmmo is a binary consideration. If there is any ammo at all, it scores highly.
+    Otherwise it scores nothing. The sniper rifle always needs reloading after every
+    shot, so we have no concerns about low ammo.
+
+
+    OnlyWhenNoLocalDanger is a scalar consideration that effectively caps the sniper
+    action''s max score. This value is less than the knife max value, so the soldier
+    will always deal with nearby enemies first.
+
+
+    PreferSnipingFarEnemies is a mapped consideration that scores low for enemies
+    that are in the near-to-medium distance. Using the sniper rifle at this distance
+    is not effective, so the action score should not be high.'
+  m_image: {fileID: 2800000, guid: 24bd1092286b3490fafddbdf989cf7ab, type: 3}
 --- !u!1001 &1113935034
 Prefab:
   m_ObjectHideFlags: 0
@@ -1436,6 +1493,56 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
+--- !u!1 &1880500680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1880500681}
+  - 114: {fileID: 1880500682}
+  m_Layer: 0
+  m_Name: 12. Shotgun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1880500681
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880500680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &1880500682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880500680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: ShotgunAction
+  m_dialog: 'The shotgun action has two considerations, HasAmmo and PreferShotgunningNearEnemies.
+
+
+    HasAmmo is a mapped consideration that scores the action less as the ammo drops
+    to zero. Reloading the shotgun is time-consuming, so we''d prefer to do that after
+    dealing with these enemies.
+
+
+    PerferShotgunningNearEnemies scores well for enemies up to the middle distance,
+    but the score drops drastically beyond that. '
+  m_image: {fileID: 2800000, guid: 5db6a7b54505d4a66b30ab048cbfde8b, type: 3}
 --- !u!1 &1901141114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,6 +2020,8 @@ Transform:
   - {fileID: 1943972491}
   - {fileID: 537465815}
   - {fileID: 641774002}
+  - {fileID: 1880500681}
+  - {fileID: 1083432732}
   m_Father: {fileID: 0}
 --- !u!114 &2088936471
 MonoBehaviour:
