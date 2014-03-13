@@ -13,8 +13,12 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
 
+            RenderContents();
+
             GUILayout.Label(m_dialog);
         }
+
+        protected virtual void RenderContents() { }
 
         //////////////////////////////////////////////////
 
