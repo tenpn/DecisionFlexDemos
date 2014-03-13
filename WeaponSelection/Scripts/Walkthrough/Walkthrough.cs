@@ -31,9 +31,41 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
 
             GUILayout.BeginArea(bgRect, GUI.skin.box);
 
+            GUILayout.BeginVertical();
+
             m_screens[m_currentScreenIndex].RenderScreen();
 
+            GUILayout.FlexibleSpace();
+
+            RenderControls();
+            
+            GUILayout.EndVertical();
             GUILayout.EndArea();
+        }
+
+        private void RenderControls()
+        {
+            GUILayout.BeginHorizontal();
+
+            GUILayout.FlexibleSpace();
+            
+            bool isNotFirstScreen = m_currentScreenIndex > 0;
+            GUI.enabled = isNotFirstScreen;
+            if (GUILayout.Button("Prev"))
+            {
+                --m_currentScreenIndex;
+            }
+
+            bool isNotLastScreen = m_currentScreenIndex < m_screens.Count - 1;
+            GUI.enabled = isNotLastScreen;
+            if (GUILayout.Button("Next"))
+            {
+                ++m_currentScreenIndex;
+            }
+
+            GUI.enabled = true;
+
+            GUILayout.EndHorizontal();            
         }
     }
 }
