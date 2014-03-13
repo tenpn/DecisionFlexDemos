@@ -57,11 +57,16 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             GUILayout.BeginArea(minimisedRect, GUI.skin.box);
             
             GUILayout.BeginHorizontal();
+
             if (GUILayout.Button("Maximise"))
             {
                 m_isMaximised = true;
             }
+
             GUILayout.FlexibleSpace();
+
+            RenderProgress();
+
             GUILayout.EndHorizontal();
             
             GUILayout.EndArea();
@@ -108,6 +113,9 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
                 --m_currentScreenIndex;
             }
 
+            GUI.enabled = true;
+            RenderProgress();
+
             bool isNotLastScreen = m_currentScreenIndex < m_screens.Count - 1;
             GUI.enabled = isNotLastScreen;
             if (GUILayout.Button("Next"))
@@ -118,6 +126,14 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             GUI.enabled = true;
 
             GUILayout.EndHorizontal();            
+        }
+
+        private void RenderProgress()
+        {
+            var progressText = string.Format("{0}/{1}", 
+                                             m_currentScreenIndex + 1,
+                                             m_screens.Count);
+            GUILayout.Label(progressText);            
         }
     }
 }
