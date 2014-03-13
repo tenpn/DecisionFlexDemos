@@ -424,6 +424,47 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
+--- !u!1 &537465813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 537465815}
+  - 114: {fileID: 537465814}
+  m_Layer: 0
+  m_Name: 10. Hierarchy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537465814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 537465813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: DecisionFlex Setup
+  m_dialog: In the heirarchy, each action has child objects for each consideration.
+  m_image: {fileID: 2800000, guid: adbd95a9b74824f6fafb835937f45201, type: 3}
+--- !u!4 &537465815
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 537465813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
 --- !u!1001 &678980489
 Prefab:
   m_ObjectHideFlags: 0
@@ -1577,7 +1618,7 @@ GameObject:
   - 4: {fileID: 1943972491}
   - 114: {fileID: 1943972490}
   m_Layer: 0
-  m_Name: 2. Details
+  m_Name: 02. Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1619,7 +1660,7 @@ GameObject:
   - 4: {fileID: 1981495461}
   - 114: {fileID: 1981495462}
   m_Layer: 0
-  m_Name: 1. Intro
+  m_Name: 01. Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1767,6 +1808,7 @@ Transform:
   m_Children:
   - {fileID: 1981495461}
   - {fileID: 1943972491}
+  - {fileID: 537465815}
   m_Father: {fileID: 0}
 --- !u!114 &2088936471
 MonoBehaviour:
