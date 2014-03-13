@@ -454,7 +454,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_title: DecisionFlex Setup
-  m_dialog: In the heirarchy, each action has child objects for each consideration.
+  m_dialog: 'In the heirarchy, each action has child objects for each consideration.
+
+
+    We''re going to walk through each action''s considerations now. If you''re running
+    this scene in the editor, feel free to explore them in the inspector.'
   m_image: {fileID: 2800000, guid: adbd95a9b74824f6fafb835937f45201, type: 3}
 --- !u!4 &537465815
 Transform:
@@ -462,6 +466,58 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 537465813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!1 &641774000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 641774002}
+  - 114: {fileID: 641774001}
+  m_Layer: 0
+  m_Name: 11. Knife
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &641774001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 641774000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: KnifeAction
+  m_dialog: 'The knife action has two considerations, OnlyStabNearEnemies and LastResort.
+
+
+    LastResort is a scalar consideration. It ensures the knife action is never scored
+    more than a maximum value.
+
+
+    This allows firearms to always be used if available.
+
+
+    OnlyStabNearEnemies is a mapped consideration, scoring each enemy against their
+    distance. Only near-by enemies score highly.'
+  m_image: {fileID: 2800000, guid: b942650a379444515bd000475d920c49, type: 3}
+--- !u!4 &641774002
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 641774000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1620,7 +1676,7 @@ GameObject:
   - 4: {fileID: 1943972491}
   - 114: {fileID: 1943972490}
   m_Layer: 0
-  m_Name: 02. Details
+  m_Name: 05. Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,6 +1708,50 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
+--- !u!1 &1959406237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1959406238}
+  - 114: {fileID: 1959406239}
+  m_Layer: 0
+  m_Name: 02. Overview
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1959406238
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1959406237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &1959406239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1959406237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: DecisionFlex Solider Demo
+  m_dialog: "The solider constantly evaluates remaining ammo and enemy positions to
+    find a weapon/pair target representing the best decision right now. \n\nDespite
+    a simple setup, the soldier is capable of making advanced decisions like only
+    sniping when there are no near-by enemies, and prefering other weapons when the
+    shotgun is running low on ammo."
 --- !u!1 &1981495460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,8 +1800,7 @@ MonoBehaviour:
     range.
 
 
-    The solider constantly evaluates remaining ammo and enemy positions to find a
-    weapon/pair target representing the best decision right now.'
+    At any time, the minimise button will hide and pause this walkthrough.'
 --- !u!1 &1990002956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,8 +1909,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1981495461}
+  - {fileID: 1959406238}
   - {fileID: 1943972491}
   - {fileID: 537465815}
+  - {fileID: 641774002}
   m_Father: {fileID: 0}
 --- !u!114 &2088936471
 MonoBehaviour:
