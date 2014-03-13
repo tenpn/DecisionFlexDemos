@@ -11,6 +11,7 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
         IList<WalkthroughScreen> m_screens;
         bool m_isMaximised = true;
 
+        [SerializeField] [Range(-1f,1f)] float m_rightShiftProp = 0.0f;
         [SerializeField] float m_widthProp = 0.75f;
         [SerializeField] float m_heightProp = 0.75f;
         [SerializeField] float m_minimisedHeight = 30f;
@@ -34,13 +35,25 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             }
         }
 
+        private Vector2 DialogLeftWidth
+        {
+            get
+            {
+                float bgWidth = Screen.width * m_widthProp;
+                float bgBuffer = (Screen.width - bgWidth) * 0.5f;
+                float normalizedProp = (m_rightShiftProp + 1f) * 0.5f;
+                float rightShift = Mathf.Lerp(-bgBuffer, bgBuffer, normalizedProp);
+                float bgLeftX = bgBuffer + rightShift;
+                return new Vector2(bgLeftX, bgWidth);
+            }
+        }
+
         private void RenderMinimisedDialog()
         {
-            float bgWidth = Screen.width * m_widthProp;
-            float bgLeftX = (Screen.width - bgWidth) * 0.5f;
+            var bgLeftWidth = DialogLeftWidth;
             float bgTopY = Screen.height - m_minimisedHeight;
-            var minimisedRect = new Rect(bgLeftX, bgTopY,
-                                         bgWidth, m_minimisedHeight);
+            var minimisedRect = new Rect(bgLeftWidth.x, bgTopY,
+                                         bgLeftWidth.y, m_minimisedHeight);
             GUILayout.BeginArea(minimisedRect, GUI.skin.box);
             
             GUILayout.BeginHorizontal();
@@ -56,12 +69,11 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
 
         private void RenderMaximisedDialog()
         {
-            float bgWidth = Screen.width * m_widthProp;
-            float bgLeftX = (Screen.width - bgWidth) * 0.5f;
+            var bgLeftWidth = DialogLeftWidth;
             float bgHeight = Screen.height * m_heightProp;
             float bgTopY = (Screen.height - bgHeight) * 0.5f;
-            var bgRect = new Rect(bgLeftX, bgTopY,
-                                  bgWidth, bgHeight);
+            var bgRect = new Rect(bgLeftWidth.x, bgTopY,
+                                  bgLeftWidth.y, bgHeight);
 
             GUILayout.BeginArea(bgRect, GUI.skin.box);
 
