@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -17,8 +18,7 @@ namespace TenPN.DecisionFlex.Demos
 
         [SerializeField] private int m_historySize = 50;
 
-        private Dictionary<PersonAttribute, float[]> m_attributeHistories;    
-        private int m_currentStartIndex;
+        private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;    
         private int m_currentHistorySize;
 
         //////////////////////////////////////////////////
@@ -27,14 +27,12 @@ namespace TenPN.DecisionFlex.Demos
         {
             var attributes = GetComponentsInChildren<PersonAttribute>();
 
-            m_attributeHistories = new Dictionary<PersonAttribute, float[]>();
+            m_attributeHistories = new Dictionary<PersonAttribute, Queue<float>>();
             foreach(var attribute in attributes)
             {
-                m_attributeHistories[attribute] = new float[m_historySize];
+                m_attributeHistories[attribute] = new Queue<float>();
             }
         
-            m_currentStartIndex = m_currentHistorySize = 0;
-
             StartCoroutine(Sampler());
         }
 
@@ -51,25 +49,19 @@ namespace TenPN.DecisionFlex.Demos
 
         private void RecordAttributes()
         {
-            int newHistorySlot = 0;
-
-            if (m_currentHistorySize < m_historySize)
-            {
-                newHistorySlot = m_currentStartIndex + m_currentHistorySize;
-                ++m_currentHistorySize;
-            }
-            else
-            {
-                newHistorySlot = m_currentStartIndex;
-                m_currentStartIndex = (m_currentStartIndex + 1) % m_historySize;
-            }
+            ++m_currentHistorySize;
+            m_currentHistorySize = Mathf.Min(m_currentHistorySize, m_historySize);
 
             foreach(var attributeHistory in m_attributeHistories)
             {
                 var attribute = attributeHistory.Key;
                 var history = attributeHistory.Value;
 
-                history[newHistorySlot] = attribute.Value;
+                history.Enqueue(attribute.Value);
+                if (history.Count > m_historySize)
+                {
+                    history.Dequeue();
+                }
             }
         }
 
@@ -82,63 +74,73 @@ namespace TenPN.DecisionFlex.Demos
                 return;
             }
 
-            int lastIndex = HistoryOffsetToIndex(lastOffset);
+            const float graphWidthProp = 0.9f;
+            const float graphHeighProp = 0.9f;
+            float graphScreenWidth = Screen.width * graphWidthProp;
+            float graphScrenHeight = Screen.height * graphHeighProp;
+
+            var graphRect = new Rect(0.5f * (Screen.width - graphScreenWidth), 
+                                     0.5f * (Screen.height - graphScrenHeight), 
+                                     graphScreenWidth, graphScrenHeight);
+            var xValues = Enumerable.Range(0, m_currentHistorySize)
+                .Select(i => (float)i).ToArray();
+            var yValuesList = m_attributeHistories.Values.Select(
+                yValues => yValues.ToArray())
+                .ToArray();
+
+            var attributesGraph = new GraphParameters {
+                ScreenBounds = graphRect,
+                YValuesList = yValuesList,
+                YValuesMinMax = new Vector2(0f, 1f),
+                XValues = xValues,
+                Cols = ColorGenerator(),
+            };
+            GraphRenderer.Instance.RenderGraph(attributesGraph);
 
             foreach(var attributeHistory in m_attributeHistories)
             {
                 var attribute = attributeHistory.Key;
                 var history = attributeHistory.Value;
             
-                float lastValue = history[lastIndex];
-                var screenCoord = CalculateScreenCoord(lastOffset, lastValue);
+                float lastValue = history.Last();
+                var screenCoord = CalculateScreenCoord(lastValue, graphRect);
 
-                var labelRect = new Rect(screenCoord.x - 40.0f, 
-                                         Screen.height - screenCoord.y, 
+                var labelRect = new Rect(screenCoord.x - 20.0f, 
+                                         screenCoord.y, 
                                          150.0f, 50.0f);
                 GUI.Label(labelRect, attribute.Name);
             }
         }
 
-        private Vector2 CalculateScreenCoord(int historyOffset, float value)
+        private void OnPostRender()
+        {
+        }
+
+        private Vector2 CalculateScreenCoord(float value, 
+                                             Rect graphScreenRect)
         {
             return new Vector2(
-                Screen.width * (historyOffset / (float)m_currentHistorySize),
-                Screen.height * value
+                graphScreenRect.xMax,
+                graphScreenRect.yMax - graphScreenRect.height * value
                 );
         }
 
         private int HistoryOffsetToIndex(int offset)
         {
-            return (m_currentStartIndex + offset) % m_historySize;
+            return offset;
         }
 
-        private void Update()
+        private IEnumerator<Color> ColorGenerator()
         {
             var colorRand = new System.Random(5);
 
-            foreach(var history in m_attributeHistories.Values)
+            while(true)
             {
                 var colour = new Color((float)colorRand.NextDouble(),
                                        (float)colorRand.NextDouble(),
                                        (float)colorRand.NextDouble(),
                                        0.85f);
-
-                var bottomLeftRay = Camera.main.ScreenPointToRay(Vector3.zero);
-                var prevCoord = bottomLeftRay.origin + bottomLeftRay.direction*10f;
-
-                for(int historyOffset = 0; historyOffset < m_currentHistorySize; ++historyOffset)
-                {
-                    int currentHistoryIndex = HistoryOffsetToIndex(historyOffset);
-                    float historyValue = history[currentHistoryIndex];
-     
-                    var screenCoord = CalculateScreenCoord(historyOffset, historyValue);
-                
-                    var screenRay = Camera.main.ScreenPointToRay((Vector3)screenCoord);
-                    var world = screenRay.origin + screenRay.direction * 10f;
-
-                    Debug.DrawLine(prevCoord, world, colour);
-                    prevCoord = world;
-                }
+                yield return colour;
             }
         }
     }
