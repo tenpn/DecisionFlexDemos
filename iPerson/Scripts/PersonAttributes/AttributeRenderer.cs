@@ -21,6 +21,13 @@ namespace TenPN.DecisionFlex.Demos
         private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;    
         private int m_currentHistorySize;
 
+        enum Source
+        {
+            Attributes,
+            Scores,
+        }
+        private Source m_currentSource = Source.Attributes;
+
         //////////////////////////////////////////////////
 
         private void Awake()
@@ -75,27 +82,42 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             const float graphWidthProp = 0.9f;
-            const float graphHeighProp = 0.9f;
+            const float graphHeighProp = 0.85f;
             float graphScreenWidth = Screen.width * graphWidthProp;
             float graphScrenHeight = Screen.height * graphHeighProp;
 
             var graphRect = new Rect(0.5f * (Screen.width - graphScreenWidth), 
                                      0.5f * (Screen.height - graphScrenHeight), 
                                      graphScreenWidth, graphScrenHeight);
+
+            RenderControlAroundGraph(graphRect);
+
             var xValues = Enumerable.Range(0, m_currentHistorySize)
                 .Select(i => (float)i).ToArray();
-            var yValuesList = m_attributeHistories.Values.Select(
-                yValues => yValues.ToArray())
-                .ToArray();
-
-            var attributesGraph = new GraphParameters {
+            var baseGraph = new GraphParameters {
                 ScreenBounds = graphRect,
-                YValuesList = yValuesList,
                 YValuesMinMax = new Vector2(0f, 1f),
                 XValues = xValues,
                 Cols = ColorGenerator(),
             };
-            GraphRenderer.Instance.RenderGraph(attributesGraph);
+
+            if (m_currentSource == Source.Attributes)
+            {
+                RenderAttributesGraph(baseGraph);
+            }
+            else
+            {
+                
+            }
+        }
+
+        private void RenderAttributesGraph(GraphParameters baseGraph)
+        {
+            var yValuesList = m_attributeHistories.Values.Select(
+                yValues => yValues.ToArray())
+                .ToArray();
+            baseGraph.YValuesList = yValuesList;
+            GraphRenderer.Instance.RenderGraph(baseGraph);
 
             foreach(var attributeHistory in m_attributeHistories)
             {
@@ -103,13 +125,33 @@ namespace TenPN.DecisionFlex.Demos
                 var history = attributeHistory.Value;
             
                 float lastValue = history.Last();
-                var screenCoord = CalculateScreenCoord(lastValue, graphRect);
+                var screenCoord = CalculateScreenCoord(lastValue, baseGraph.ScreenBounds);
 
                 var labelRect = new Rect(screenCoord.x - 20.0f, 
                                          screenCoord.y, 
                                          150.0f, 50.0f);
                 GUI.Label(labelRect, attribute.Name);
             }
+        }
+
+        private void RenderControlAroundGraph(Rect graphRect)
+        {
+            const float gap = 2f;
+            
+            var controlsRect = new Rect(graphRect.xMin, 2f, 
+                                        graphRect.width, graphRect.yMin - gap * 2f);
+
+            GUILayout.BeginArea(controlsRect);
+            GUILayout.BeginHorizontal();
+
+            var sourceNames = Enum.GetNames(typeof(Source));
+            m_currentSource =  (Source)GUILayout.SelectionGrid((int)m_currentSource, 
+                                                               sourceNames, 
+                                                               sourceNames.Length);
+            GUILayout.EndHorizontal();
+            GUILayout.EndArea();
+
+            
         }
 
         private void OnPostRender()
