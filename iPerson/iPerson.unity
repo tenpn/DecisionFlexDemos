@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_minModify: 0
-  m_maxModify: .0670000017
+  m_maxModify: .100000001
   m_target: {fileID: 1920877031}
 --- !u!1 &625090452
 GameObject:
