@@ -33,6 +33,7 @@ namespace TenPN.DecisionFlex.Demos
 
         private string m_pendingAction;
         private DecisionMaker m_decisionMaker;
+        bool m_isPaused = false;
 
         //////////////////////////////////////////////////
 
@@ -59,6 +60,24 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             StartCoroutine(Sampler());
+        }
+
+        private bool IsPaused
+        {
+            get
+            {
+                return m_isPaused;
+            }
+            set
+            {
+                if (m_isPaused == value)
+                {
+                    return;
+                }
+
+                Time.timeScale = value ? 0f : 1f;
+                m_isPaused = value;
+            }
         }
 
         private IEnumerator Sampler()
@@ -213,6 +232,11 @@ namespace TenPN.DecisionFlex.Demos
             m_currentSource =  (Source)GUILayout.SelectionGrid((int)m_currentSource, 
                                                                sourceNames, 
                                                                sourceNames.Length);
+
+            GUILayout.FlexibleSpace();
+
+            IsPaused = GUILayout.Toggle(IsPaused, "Pause");
+
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
