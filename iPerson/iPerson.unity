@@ -240,15 +240,20 @@ MonoBehaviour:
   m_responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: .254123956
+    - time: .545000017
       value: -.00102591515
-      inSlope: 1.73488438
-      outSlope: 1.73488438
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: .85255146
+      value: .380287319
+      inSlope: 2.7276814
+      outSlope: 2.7276814
       tangentMode: 10
-    - time: .832195103
+    - time: 1
       value: 1.00186062
-      inSlope: 1.73488438
-      outSlope: 1.73488438
+      inSlope: 4.21552706
+      outSlope: 4.21552706
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -365,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_minModify: 0
-  m_maxModify: .159999996
+  m_maxModify: .0670000017
   m_target: {fileID: 1920877031}
 --- !u!1 &625090452
 GameObject:
@@ -719,15 +724,15 @@ MonoBehaviour:
   m_responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: .201023206
+    - time: .449999988
       value: -.000760487979
-      inSlope: 1.5220381
-      outSlope: 1.5220381
+      inSlope: 2.44962239
+      outSlope: 2.44962239
       tangentMode: 10
     - time: .858536601
       value: 1
-      inSlope: 1.5220381
-      outSlope: 1.5220381
+      inSlope: 2.44962239
+      outSlope: 2.44962239
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -894,15 +899,15 @@ MonoBehaviour:
   m_responseCurve:
     serializedVersion: 2
     m_Curve:
-    - time: .150157243
+    - time: .449999988
       value: 1
-      inSlope: -2.85009837
-      outSlope: -2.85009837
+      inSlope: -2.85714316
+      outSlope: -2.85714316
       tangentMode: 10
-    - time: .501022339
+    - time: .799999952
       value: 0
-      inSlope: -2.85009837
-      outSlope: -2.85009837
+      inSlope: -2.85714316
+      outSlope: -2.85714316
       tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
