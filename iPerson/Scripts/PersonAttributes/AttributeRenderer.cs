@@ -19,6 +19,8 @@ namespace TenPN.DecisionFlex.Demos
         [SerializeField] private int m_historySize = 50;
 
         private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;
+        private Dictionary<GameObject, Queue<float>> m_actionScoreHistories = 
+            new Dictionary<GameObject, Queue<float>>();
         private Queue<string> m_actionsHistory = new Queue<string>();
         private int m_currentHistorySize;
 
@@ -30,6 +32,7 @@ namespace TenPN.DecisionFlex.Demos
         private Source m_currentSource = Source.Attributes;
 
         private string m_pendingAction;
+        private DecisionMaker m_decisionMaker;
 
         //////////////////////////////////////////////////
 
@@ -42,15 +45,20 @@ namespace TenPN.DecisionFlex.Demos
             {
                 m_attributeHistories[attribute] = new Queue<float>();
             }
-        
-            StartCoroutine(Sampler());
         }
 
         private void Start()
         {
-            var decisionMaker = 
-                transform.parent.GetComponentInChildren<TenPN.DecisionFlex.DecisionMaker>();
-            decisionMaker.OnNewAction += OnAction;
+            m_decisionMaker = transform.parent.GetComponentInChildren<DecisionMaker>();
+            m_decisionMaker.OnNewAction += OnAction;
+
+            var allActions = transform.parent.GetComponentsInChildren<Action>();
+            foreach(var action in allActions)
+            {
+                m_actionScoreHistories[action.gameObject] = new Queue<float>();
+            }
+
+            StartCoroutine(Sampler());
         }
 
         private IEnumerator Sampler()
@@ -59,15 +67,15 @@ namespace TenPN.DecisionFlex.Demos
             {
                 // could use InvokeRepeating here, but then you couldn't
                 // fiddle with the sample interval in the editor during play.
+                m_currentHistorySize = Mathf.Min(m_currentHistorySize + 1, m_historySize);
                 RecordAttributes();
+                RecordActionScores();
                 yield return new WaitForSeconds(m_sampleInterval);
             }
         }
 
         private void RecordAttributes()
         {
-            m_currentHistorySize = Mathf.Min(m_currentHistorySize + 1, m_historySize);
-
             foreach(var attributeHistory in m_attributeHistories)
             {
                 var attribute = attributeHistory.Key;
@@ -78,6 +86,21 @@ namespace TenPN.DecisionFlex.Demos
 
             PushWithRestrictedSize(m_pendingAction, m_actionsHistory);
             m_pendingAction = null;
+        }
+
+        private void RecordActionScores()
+        {
+            var allActionScores = m_decisionMaker.AllLastSelections;
+            
+            foreach(var actionScore in allActionScores)
+            {
+                var action = actionScore.ActionObject;
+
+                Queue<float> recentActionScores = m_actionScoreHistories[action];
+
+                float scoreValue = actionScore.Score;
+                PushWithRestrictedSize(scoreValue, recentActionScores);
+            }
         }
 
         private void PushWithRestrictedSize<T>(T data, Queue<T> store)
@@ -120,11 +143,11 @@ namespace TenPN.DecisionFlex.Demos
 
             if (m_currentSource == Source.Attributes)
             {
-                RenderAttributesGraph(baseGraph);
+                RenderHistories(m_attributeHistories, baseGraph, att => att.Name);
             }
             else
             {
-                
+                RenderHistories(m_actionScoreHistories, baseGraph, act => act.name);
             }
 
             RenderActionsOnGraph(graphRect);
@@ -149,20 +172,22 @@ namespace TenPN.DecisionFlex.Demos
             }
         }
 
-        private void RenderAttributesGraph(GraphParameters baseGraph)
+        private void RenderHistories<T>(Dictionary<T,Queue<float>> histories, 
+                                        GraphParameters baseGraph,
+                                        Func<T,string> toString)
         {
-            var yValuesList = m_attributeHistories.Values.Select(
+            var yValuesList = histories.Values.Select(
                 yValues => yValues.ToArray())
                 .ToArray();
             baseGraph.YValuesList = yValuesList;
             GraphRenderer.Instance.RenderGraph(baseGraph);
 
-            foreach(var attributeHistory in m_attributeHistories)
+            foreach(var history in histories)
             {
-                var attribute = attributeHistory.Key;
-                var history = attributeHistory.Value;
+                var key = history.Key;
+                var scores = history.Value;
             
-                float lastValue = history.Last();
+                float lastValue = scores.Last();
                 var screenCoord = CalculateScreenCoord(m_currentHistorySize - 1, 
                                                        lastValue, 
                                                        baseGraph.ScreenBounds);
@@ -170,7 +195,7 @@ namespace TenPN.DecisionFlex.Demos
                 var labelRect = new Rect(screenCoord.x - 20.0f, 
                                          screenCoord.y, 
                                          150.0f, 50.0f);
-                GUI.Label(labelRect, attribute.Name);
+                GUI.Label(labelRect, toString(key));
             }
         }
 
