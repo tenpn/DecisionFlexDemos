@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos.Walkthrough
 {
-    public class Walkthrough : MonoBehaviour {
-        
+    public class Walkthrough : MonoBehaviour 
+    {
         //////////////////////////////////////////////////
 
         int m_currentScreenIndex = 0;
@@ -102,6 +102,11 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             if (GUILayout.Button("Minimise"))
             {
                 m_isMaximised = false;
+            }
+
+            if (GUILayout.Button("Back to main menu"))
+            {
+                Application.LoadLevel(0);
             }
 
             GUILayout.FlexibleSpace();
