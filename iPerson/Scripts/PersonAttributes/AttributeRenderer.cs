@@ -87,9 +87,10 @@ namespace TenPN.DecisionFlex.Demos
                 // could use InvokeRepeating here, but then you couldn't
                 // fiddle with the sample interval in the editor during play.
                 m_currentHistorySize = Mathf.Min(m_currentHistorySize + 1, m_historySize);
-                RecordAttributes();
                 RecordActionScores();
+                RecordAttributes();
                 yield return new WaitForSeconds(m_sampleInterval);
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -110,6 +111,7 @@ namespace TenPN.DecisionFlex.Demos
         private void RecordActionScores()
         {
             var allActionScores = m_decisionMaker.AllLastSelections;
+            bool isActionTurn = string.IsNullOrEmpty(m_pendingAction) == false;
             
             foreach(var actionScore in allActionScores)
             {
@@ -117,7 +119,7 @@ namespace TenPN.DecisionFlex.Demos
 
                 Queue<float> recentActionScores = m_actionScoreHistories[action];
 
-                float scoreValue = actionScore.Score;
+                float scoreValue = isActionTurn ? actionScore.Score : 0f;
                 PushWithRestrictedSize(scoreValue, recentActionScores);
             }
         }
