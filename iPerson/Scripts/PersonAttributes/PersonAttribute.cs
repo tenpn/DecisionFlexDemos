@@ -41,7 +41,7 @@ namespace TenPN.DecisionFlex.Demos
 
         //////////////////////////////////////////////////
 
-        private void Start()
+        private void Awake()
         {
             Value = m_startingValue;
             m_baseName = gameObject.name;
