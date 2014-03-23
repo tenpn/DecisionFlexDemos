@@ -106,6 +106,7 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
 
             if (GUILayout.Button("Back to main menu"))
             {
+                Time.timeScale = 1f;
                 Application.LoadLevel(0);
             }
 
