@@ -176,6 +176,19 @@ namespace TenPN.DecisionFlex.Demos
 
         private void RenderActionsOnGraph(Rect graphRect)
         {
+            // render decisions label vertically
+            var pos = new Vector2(graphRect.x - 20f, Screen.height - 5f);
+            var quat = Quaternion.identity; 
+            quat.eulerAngles = new Vector3(0f, 0f, -90f);
+            var oldMatrix = GUI.matrix;
+            GUI.matrix = Matrix4x4.TRS(pos, quat, Vector3.one); 
+
+            var actionsLabelRect = new Rect(0f, 0f,
+                                            150f, 50f);
+            GUI.Label(actionsLabelRect, "Decisions");
+
+            GUI.matrix = oldMatrix;
+
             int historyIndex = 0;
             foreach(var action in m_actionsHistory)
             {
