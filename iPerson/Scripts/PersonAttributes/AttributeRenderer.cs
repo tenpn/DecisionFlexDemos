@@ -206,9 +206,9 @@ namespace TenPN.DecisionFlex.Demos
                 var key = history.Key;
                 var scores = history.Value;
             
-                float lastValue = scores.Last();
-                var screenCoord = CalculateScreenCoord(m_currentHistorySize - 1, 
-                                                       lastValue, 
+                var lastInterestingIndexValue = LastNotableValueIn(scores);
+                var screenCoord = CalculateScreenCoord(lastInterestingIndexValue.Key,
+                                                       lastInterestingIndexValue.Value,
                                                        baseGraph.ScreenBounds);
 
                 var labelRect = new Rect(screenCoord.x - 20.0f, 
@@ -216,6 +216,22 @@ namespace TenPN.DecisionFlex.Demos
                                          150.0f, 50.0f);
                 GUI.Label(labelRect, toString(key));
             }
+        }
+
+        private KeyValuePair<int,float> LastNotableValueIn(IEnumerable<float> values)
+        {
+            int index = values.Count();
+            foreach(var value in values.Reverse())
+            {
+                --index;
+                if (value > 0f)
+                {
+                    return new KeyValuePair<int,float>(index, value);
+                }
+            }
+
+            // just go with last value
+            return new KeyValuePair<int,float>(values.Count()-1, values.Last());
         }
 
         private void RenderControlAroundGraph(Rect graphRect)
