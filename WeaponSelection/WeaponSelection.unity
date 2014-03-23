@@ -2231,7 +2231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd15961ffee7e403e84fcb7d467fbb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rightShiftProp: -.899999976
+  m_rightShiftProp: -.230000004
   m_widthProp: .5
   m_heightProp: .75
   m_minimisedHeight: 30

@@ -51,7 +51,7 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
         private void RenderMinimisedDialog()
         {
             var bgLeftWidth = DialogLeftWidth;
-            float bgTopY = Screen.height - m_minimisedHeight;
+            float bgTopY = 0f;
             var minimisedRect = new Rect(bgLeftWidth.x, bgTopY,
                                          bgLeftWidth.y, m_minimisedHeight);
             GUILayout.BeginArea(minimisedRect, GUI.skin.box);
