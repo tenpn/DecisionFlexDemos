@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/" 
+                      + "WeaponSelectionConsiderationContextFactory")]
     public class WeaponSelectionConsiderationContextFactory : ConsiderationContextFactory
     {
         // return all enemies in turn

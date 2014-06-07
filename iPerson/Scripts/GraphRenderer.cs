@@ -14,6 +14,7 @@ namespace TenPN.DecisionFlex.Demos
         public IEnumerator<Color> Cols;
     }
 
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/GraphRenderer")]
     public class GraphRenderer : MonoBehaviour
     {
         public static GraphRenderer Instance;

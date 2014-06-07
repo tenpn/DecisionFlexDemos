@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos.Walkthrough
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Walkthrough/Dialog")]
     public class DialogWalkthroughScreen : WalkthroughScreen
     {
         public override void RenderScreen()

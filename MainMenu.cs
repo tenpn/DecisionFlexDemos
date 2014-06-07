@@ -3,6 +3,7 @@ using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/MainMenu")]
     public class MainMenu : MonoBehaviour
     {
         //////////////////////////////////////////////////

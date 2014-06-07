@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos.Walkthrough
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Walkthrough/Walkthrough")]
     public class Walkthrough : MonoBehaviour 
     {
         //////////////////////////////////////////////////

@@ -4,7 +4,7 @@ using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
-
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/ModifyAttribute")]
     public class ModifyAttribute : Action
     {
         public override void Perform(IConsiderationContext context)

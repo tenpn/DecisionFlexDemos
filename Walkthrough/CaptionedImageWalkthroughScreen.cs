@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos.Walkthrough
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Walkthrough/CaptionedImage")]
     public class CaptionedImageWalkthroughScreen : DialogWalkthroughScreen
     {
         protected override void RenderContents()

@@ -7,8 +7,8 @@ using System.Collections;
 
 namespace TenPN.DecisionFlex.Demos
 {
-
     /** graph all attributes over time, on screen */
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/Attribute Renderer")]
     public class AttributeRenderer : MonoBehaviour
     {
         //////////////////////////////////////////////////

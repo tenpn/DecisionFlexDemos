@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/FollowWaypoints")]
     public class FollowWaypoints : MonoBehaviour
     {
         public bool IsPaused { get; set; }

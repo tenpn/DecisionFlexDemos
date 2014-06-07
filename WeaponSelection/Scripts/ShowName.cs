@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/ShowName")]
     public class ShowName : MonoBehaviour
     {
         //////////////////////////////////////////////////

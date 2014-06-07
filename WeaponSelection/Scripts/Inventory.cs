@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/Inventory")]
     public class Inventory : MonoBehaviour
     {
         //////////////////////////////////////////////////

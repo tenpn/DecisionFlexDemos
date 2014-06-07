@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace TenPN.DecisionFlex.Demos
 {
-
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/Attribute ContextFactory")]
     public class AttributeContextFactory : ConsiderationContextFactory
     {
         // return all person attributes

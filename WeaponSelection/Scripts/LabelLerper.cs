@@ -8,6 +8,7 @@ using Action = System.Action;
 namespace TenPN.DecisionFlex.Demos
 {
     // given text, start T, end T will move label from start to end
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/LabelLerper")]
     public class LabelLerper : MonoBehaviour
     {
         public static void LerpLabelFromTo(string label, Vector3 fromPos, 
