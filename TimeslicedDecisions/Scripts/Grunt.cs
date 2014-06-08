@@ -33,6 +33,11 @@ namespace TenPN.DecisionFlex.Demos
         public delegate void HPChangeCallback();
         public event HPChangeCallback HPChange;
 
+        public Vector3 Velocity 
+        {
+            get; set;
+        }
+
         //////////////////////////////////////////////////
 
         [SerializeField] 
@@ -44,6 +49,7 @@ namespace TenPN.DecisionFlex.Demos
         void Awake()
         {
             m_hp = m_maxHP;
+            Velocity = Vector3.zero;
         }
     }
     
