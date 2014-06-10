@@ -7,28 +7,31 @@ namespace TenPN.DecisionFlex.Demos
     public class GruntConsiderationContextFactory : ConsiderationContextFactory
     {
         // returns considerations of this grunt
-        public override IEnumerable<IConsiderationContext> AllContexts(Logging loggingSetting)
+        public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
         {
-            var context = new ConsiderationContextDictionary();
-            
             var distanceToHealth = 
                 Mathf.Max(0f, 
                           (m_healthArea.transform.position - transform.position).magnitude 
                           - m_healthArea.radius);
-            context.SetContext("DistanceToHealth", distanceToHealth);
+            m_context.SetContext("DistanceToHealth", distanceToHealth);
 
             var distanceToEnemy = 
                 Mathf.Max(0f, 
                           (m_enemyArea.transform.position - transform.position).magnitude 
                           - m_enemyArea.radius);
-            context.SetContext("DistanceToEnemy", distanceToEnemy);
+            m_context.SetContext("DistanceToEnemy", distanceToEnemy);
 
-            context.SetContext("HP", m_grunt.NormalizedHP);
+            m_context.SetContext("HP", m_grunt.NormalizedHP);
             
-            yield return context;
+            return m_allContexts;
         }
 
         //////////////////////////////////////////////////
+
+        // avoid allocations by caching everything we can reuse
+        private ConsiderationContextDictionary m_context = 
+            new ConsiderationContextDictionary();
+        private IConsiderationContext[] m_allContexts = new IConsiderationContext[1];
 
         private CircleCollider2D m_healthArea;
         private CircleCollider2D m_enemyArea;
@@ -41,6 +44,7 @@ namespace TenPN.DecisionFlex.Demos
             m_healthArea = (CircleCollider2D)GameObject.FindWithTag("Health").collider2D;
             m_enemyArea = (CircleCollider2D)GameObject.FindWithTag("Enemy").collider2D;
             m_grunt = transform.parent.GetComponent<Grunt>();
+            m_allContexts[0] = m_context;
         }
     }
 }

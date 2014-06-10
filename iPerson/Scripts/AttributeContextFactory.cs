@@ -10,7 +10,7 @@ namespace TenPN.DecisionFlex.Demos
     public class AttributeContextFactory : ConsiderationContextFactory
     {
         // return all person attributes
-        public override IEnumerable<IConsiderationContext> AllContexts(Logging loggingSetting)
+        public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
         {
             var context = new ConsiderationContextDictionary();
 
@@ -19,7 +19,7 @@ namespace TenPN.DecisionFlex.Demos
                 context.SetContext(attribute.Name, attribute.Value);
             }
 
-            yield return context;
+            return new IConsiderationContext[] { context };
         }
 
         //////////////////////////////////////////////////

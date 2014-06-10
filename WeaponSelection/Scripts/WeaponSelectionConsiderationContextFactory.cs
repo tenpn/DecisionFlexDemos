@@ -10,15 +10,19 @@ namespace TenPN.DecisionFlex.Demos
     public class WeaponSelectionConsiderationContextFactory : ConsiderationContextFactory
     {
         // return all enemies in turn
-        public override IEnumerable<IConsiderationContext> AllContexts(Logging loggingSetting)
+        public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
         {
             var masterContext = new ConsiderationContextDictionary();
 
             SendMessage("PopulateMasterConsiderationContext", masterContext);
 
             var allEnemies = GameObject.FindGameObjectsWithTag(m_enemyTagName);
-            foreach(var enemy in allEnemies)
+
+            var allContexts = new IConsiderationContext[allEnemies.Length];
+
+            for(int enemyIndex = 0; enemyIndex < allEnemies.Length; ++enemyIndex)
             {
+                var enemy = allEnemies[enemyIndex];
                 var context = new ConsiderationContextDictionary(masterContext);
         
                 float targetDistance = Vector3.Distance(transform.position,
@@ -32,8 +36,10 @@ namespace TenPN.DecisionFlex.Demos
 
                 context.SetContext(m_enemyGOContextName, enemy);
                 context.SetContext(m_enemyDistanceContextName, targetDistance);
-                yield return context;
+                allContexts[enemyIndex] = context;
             }
+
+            return allContexts;
         }
 
         //////////////////////////////////////////////////
