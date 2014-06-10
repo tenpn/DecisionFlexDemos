@@ -58,7 +58,8 @@ namespace TenPN.DecisionFlex.Demos
         }
 
         // push our relevent into into master context
-        private void PopulateMasterConsiderationContext(IConsiderationContext masterContext)
+        private void PopulateMasterConsiderationContext(
+            ConsiderationContextDictionary masterContext)
         {
             var contents = CalculateInventoryContents();
 
