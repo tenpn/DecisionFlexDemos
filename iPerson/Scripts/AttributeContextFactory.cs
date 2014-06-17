@@ -12,7 +12,7 @@ namespace TenPN.DecisionFlex.Demos
         // return all person attributes
         public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
         {
-            var context = new ConsiderationContextDictionary();
+            var context = new FastConsiderationContextDictionary();
 
             foreach(var attribute in m_allAttributes)
             {
