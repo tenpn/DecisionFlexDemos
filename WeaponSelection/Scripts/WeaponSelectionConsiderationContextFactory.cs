@@ -23,7 +23,7 @@ namespace TenPN.DecisionFlex.Demos
             for(int enemyIndex = 0; enemyIndex < allEnemies.Length; ++enemyIndex)
             {
                 var enemy = allEnemies[enemyIndex];
-                var context = new ConsiderationContextDictionary(masterContext);
+                var context = new ConsiderationContextDictionary();
         
                 float targetDistance = Vector3.Distance(transform.position,
                                                         enemy.transform.position);
@@ -36,7 +36,10 @@ namespace TenPN.DecisionFlex.Demos
 
                 context.SetContext(m_enemyGOContextName, enemy);
                 context.SetContext(m_enemyDistanceContextName, targetDistance);
-                allContexts[enemyIndex] = context;
+
+                var parentedContext = 
+                    new HierarchicalConsiderationContext(context, masterContext);
+                allContexts[enemyIndex] = parentedContext;
             }
 
             return allContexts;
