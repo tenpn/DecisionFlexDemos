@@ -39,7 +39,7 @@ namespace TenPN.DecisionFlex.Demos
 
         //////////////////////////////////////////////////
 
-        private void Start()
+        private void Awake()
         {
             m_healthArea = (CircleCollider2D)GameObject.FindWithTag("Health").collider2D;
             m_enemyArea = (CircleCollider2D)GameObject.FindWithTag("Enemy").collider2D;
