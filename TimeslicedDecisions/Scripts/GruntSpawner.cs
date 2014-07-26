@@ -48,6 +48,7 @@ namespace TenPN.DecisionFlex.Demos
             var spawnPos = Random.insideUnitCircle.normalized * m_spawnZone.radius;
             var newGrunt = (GameObject)Instantiate(m_prefab, spawnPos, Quaternion.identity);
             newGrunt.transform.parent = transform;
+            newGrunt.name = "Grunt id:" + newGrunt.GetInstanceID();
         }
     }
 }
