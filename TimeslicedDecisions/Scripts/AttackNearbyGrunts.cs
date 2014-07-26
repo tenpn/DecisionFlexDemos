@@ -27,6 +27,8 @@ namespace TenPN.DecisionFlex.Demos
 
         void Update()
         {
+            m_attackInterval = Mathf.Max(m_attackInterval, 1/60f);
+
             m_timeToNextAttack -= Time.deltaTime;
             while (m_timeToNextAttack < 0f) 
             {
