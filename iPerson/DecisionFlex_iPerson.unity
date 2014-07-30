@@ -286,6 +286,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 299147268}
+  - {fileID: 790457465}
   m_Father: {fileID: 0}
 --- !u!1 &510559581
 GameObject:
@@ -542,6 +543,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_comment: default action!
   m_scalar: .150000006
+--- !u!1 &790457463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 790457465}
+  - 114: {fileID: 790457464}
+  m_Layer: 0
+  m_Name: 10 Concepts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &790457464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 790457463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Concepts
+  m_dialog: 'The iPerson has four attributes. Fitness and Wealth should be high, and
+    Hunger and Thirst should be low.
+
+
+    The attributes can be changed by five actions: Drink, Eat, Exercise, Work and
+    finally Idle for when there''s nothing better to do. Each may affect more than
+    one attribute - for instance Eat improves hunger but makes the iPerson unfit.
+
+
+    Every few seconds, DecisionFlex chooses the next action. You can see the actions
+    running along the bottom of the graph.'
+--- !u!4 &790457465
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 790457463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 483368433}
 --- !u!1 &1091622976
 GameObject:
   m_ObjectHideFlags: 0
