@@ -32,11 +32,16 @@ namespace TenPN.DecisionFlex.Demos
             Center(() => GUILayout.Label("Choose a scene:"));
 
             var loadLevelLayout = GUILayout.MinWidth(menuWidth * 0.9f);
-            var levelNames = new string[] { "iPerson", "WeaponSelection" };
+            var levelNames = new string[] { 
+                "DecisionFlex_iPerson", 
+                "DecisionFlex_WeaponSelection", 
+                "DecisionFlex_Grunts" 
+            };
             foreach(var levelName in levelNames)
             {
                 Center(() => { 
-                        if (GUILayout.Button(levelName, loadLevelLayout))
+                        var publicName = levelName.Replace("DecisionFlex_", "");
+                        if (GUILayout.Button(publicName, loadLevelLayout))
                         {
                             Application.LoadLevel(levelName);
                         }
