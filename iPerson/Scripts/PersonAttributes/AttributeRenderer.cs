@@ -82,6 +82,14 @@ namespace TenPN.DecisionFlex.Demos
 
         private IEnumerator Sampler()
         {
+            // let's run some early decisions to fill out data
+            m_currentHistorySize = 3;
+            for(int warmupIndex = 0; warmupIndex < m_currentHistorySize; ++warmupIndex) {
+                m_decisionMaker.PerformAction();
+                RecordActionScores();
+                RecordAttributes();
+            }
+
             while(true)
             {
                 // could use InvokeRepeating here, but then you couldn't
