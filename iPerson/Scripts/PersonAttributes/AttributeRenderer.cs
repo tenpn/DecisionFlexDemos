@@ -33,12 +33,14 @@ namespace TenPN.DecisionFlex.Demos
 
         private string m_pendingAction;
         private DecisionMaker m_decisionMaker;
-        bool m_isPaused = false;
+        bool m_isPaused = true;
 
         //////////////////////////////////////////////////
 
         private void Awake()
         {
+            IsPaused = m_isPaused;
+
             var attributes = GetComponentsInChildren<PersonAttribute>();
 
             m_attributeHistories = new Dictionary<PersonAttribute, Queue<float>>();
@@ -70,11 +72,6 @@ namespace TenPN.DecisionFlex.Demos
             }
             set
             {
-                if (m_isPaused == value)
-                {
-                    return;
-                }
-
                 Time.timeScale = value ? 0f : 1f;
                 m_isPaused = value;
             }
