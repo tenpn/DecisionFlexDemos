@@ -244,6 +244,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_minScoreCutoff: .100000001
+--- !u!1 &414918634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 414918635}
+  - 114: {fileID: 414918636}
+  m_Layer: 0
+  m_Name: 100 End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414918635
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414918634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 483368433}
+--- !u!114 &414918636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414918634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Simulate
+  m_dialog: "If you haven't, unpause the simulation in the top-right. \n\nWatch the
+    graphs move for a whie, see how it behaves sensibly with a mostly data-driven
+    setup, and no cascading If statements. \n\nif you have the demo open in the editor,
+    play with the considerations. Can you make the iPerson more of a slob? Or a health
+    freak?"
 --- !u!1 &483368431
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +333,8 @@ Transform:
   - {fileID: 790457465}
   - {fileID: 1928263770}
   - {fileID: 2125107595}
+  - {fileID: 1802071452}
+  - {fileID: 414918635}
   m_Father: {fileID: 0}
 --- !u!1 &510559581
 GameObject:
@@ -993,6 +1039,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662bc1695083745f38f7f2826efdf065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1802071450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1802071452}
+  - 114: {fileID: 1802071451}
+  m_Layer: 0
+  m_Name: 40 Considerations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1802071451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802071450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: Considerations
+  m_dialog: "The actions are mainly scored with Float considerations. For instance,
+    low wealth makes work score highly, but high hunger makes eating score highly.
+    \n\nSome priority considerations are used to make sure exercise and work are not
+    chosen over life-saving actions like drinking."
+  m_image: {fileID: 2800000, guid: 9a883f19601cd4d36be0e129177030e4, type: 3}
+--- !u!4 &1802071452
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802071450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 483368433}
 --- !u!1 &1864718740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,10 +1207,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: Actions
   m_dialog: "Each action may affect more than one attribute - for instance Eat improves
-    hunger but makes the iPerson unfit. \n\nThis is implemented by just having more
-    than one action script on the Eat action gameObject. Since DecisionFlex finds
-    all the actions automatically, there's no clumsy setup to link link multiple actions
-    to the same decision."
+    hunger but makes the iPerson unfit. \n\nThis is implemented by having multiple
+    action scripts on the Eat action's GameObject. Since DecisionFlex finds all the
+    actions automatically, there's no clumsy setup to link link multiple actions to
+    the same decision."
 --- !u!4 &1928263770
 Transform:
   m_ObjectHideFlags: 0
