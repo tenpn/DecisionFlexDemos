@@ -7,10 +7,10 @@ using System.Linq;
 namespace TenPN.DecisionFlex.Demos
 {
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/Attribute ContextFactory")]
-    public class AttributeContextFactory : ConsiderationContextFactory
+    public class AttributeContextFactory : SingleConsiderationContextFactory
     {
         // return all person attributes
-        public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
+        public override IConsiderationContext SingleContext(Logging loggingSetting)
         {
             var context = new FastConsiderationContextDictionary();
 
@@ -19,7 +19,7 @@ namespace TenPN.DecisionFlex.Demos
                 context.SetContext(attribute.Name, attribute.Value);
             }
 
-            return new IConsiderationContext[] { context };
+            return context;
         }
 
         //////////////////////////////////////////////////
