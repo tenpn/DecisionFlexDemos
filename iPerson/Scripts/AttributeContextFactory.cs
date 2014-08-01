@@ -6,6 +6,10 @@ using System.Linq;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    /**
+       \brief
+       for the iPerson demo. Pushes the iPerson attributes into a single IConsiderationContext
+    */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/Attribute ContextFactory")]
     public class AttributeContextFactory : SingleConsiderationContextFactory
     {
