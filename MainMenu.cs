@@ -33,8 +33,8 @@ namespace TenPN.DecisionFlex.Demos
 
             var loadLevelLayout = GUILayout.MinWidth(menuWidth * 0.9f);
             var levelNames = new string[] { 
-                "DecisionFlex_iPerson", 
                 "DecisionFlex_WeaponSelection", 
+                "DecisionFlex_iPerson", 
                 "DecisionFlex_Grunts" 
             };
             foreach(var levelName in levelNames)
