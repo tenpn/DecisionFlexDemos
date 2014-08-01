@@ -11,6 +11,7 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
         int m_currentScreenIndex = 0;
         IList<WalkthroughScreen> m_screens;
         bool m_isMaximised = true;
+        GUIStyle m_boxStyle;
 
         [SerializeField] [Range(-1f,1f)] float m_rightShiftProp = 0.0f;
         [SerializeField] float m_widthProp = 0.75f;
@@ -26,6 +27,12 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
 
         private void OnGUI()
         {
+            if (m_boxStyle == null)
+            {
+                m_boxStyle = new GUIStyle(GUI.skin.box);
+                m_boxStyle.normal.background = MakeTex(2, 2, new Color(0f, 0f, 0f, 1f));
+            }
+
             if (m_isMaximised)
             {
                 RenderMaximisedDialog();
@@ -81,7 +88,7 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
             var bgRect = new Rect(bgLeftWidth.x, bgTopY,
                                   bgLeftWidth.y, bgHeight);
 
-            GUILayout.BeginArea(bgRect, GUI.skin.box);
+            GUILayout.BeginArea(bgRect, m_boxStyle);
 
             GUILayout.BeginVertical();
 
@@ -142,5 +149,20 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
                                              m_screens.Count);
             GUILayout.Label(progressText);            
         }
+
+        // http://forum.unity3d.com/threads/change-gui-box-color.174609/
+        private Texture2D MakeTex( int width, int height, Color col )
+        {
+            Color[] pix = new Color[width * height];
+            for( int i = 0; i < pix.Length; ++i )
+            {
+                pix[ i ] = col;
+            }
+            Texture2D result = new Texture2D( width, height );
+            result.SetPixels( pix );
+            result.Apply();
+            return result;
+        }
+
     }
 }
