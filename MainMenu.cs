@@ -10,6 +10,12 @@ namespace TenPN.DecisionFlex.Demos
 
         //////////////////////////////////////////////////
 
+        private void Start() 
+        {
+            // double-check we're unpaused.
+            Time.timeScale = 1f;
+        }
+
         private void OnGUI()
         {
             const float menuWidthProp = 0.5f;
