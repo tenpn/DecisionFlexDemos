@@ -6,17 +6,11 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    /** holds ammo for solider */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/Inventory")]
     public class Inventory : MonoBehaviour
     {
-        //////////////////////////////////////////////////
-
-        [SerializeField] int m_shotgunShells;
-        [SerializeField] int m_fiftyCalRounds;
-
-        //////////////////////////////////////////////////
-
-        private struct Ammo
+        public struct Ammo
         {
             public string Name;
 
@@ -34,7 +28,7 @@ namespace TenPN.DecisionFlex.Demos
             public Inventory Inventory;
         }
 
-        private IEnumerable<Ammo> CalculateInventoryContents()
+        public IEnumerable<Ammo> CalculateInventoryContents()
         {
             var contents = new List<Ammo>();
 
@@ -57,17 +51,12 @@ namespace TenPN.DecisionFlex.Demos
             return contents;
         }
 
-        // push our relevent into into master context
-        private void PopulateMasterConsiderationContext(
-            ConsiderationContextDictionary masterContext)
-        {
-            var contents = CalculateInventoryContents();
+        //////////////////////////////////////////////////
 
-            foreach(var ammo in contents)
-            {
-                masterContext.SetContext(ammo.Name, ammo.GetCount());
-            }
-        }
+        [SerializeField] int m_shotgunShells;
+        [SerializeField] int m_fiftyCalRounds;
+
+        //////////////////////////////////////////////////
 
         private void OnGUI()
         {

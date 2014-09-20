@@ -5,6 +5,11 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    /** 
+        Every decision, generates one consideration context per enemy.
+        This means we can pick the best weapon-enemy pair to shoot with-at.
+        Each context also has full ammo information, using a hierarchical context.
+    */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/" 
                       + "WeaponSelectionConsiderationContextFactory")]
     public class WeaponSelectionConsiderationContextFactory : ConsiderationContextFactory
@@ -14,7 +19,11 @@ namespace TenPN.DecisionFlex.Demos
         {
             var masterContext = new ConsiderationContextDictionary();
 
-            SendMessage("PopulateMasterConsiderationContext", masterContext);
+            var inventoryContents = m_inventory.CalculateInventoryContents();
+            foreach(var ammo in inventoryContents)
+            {
+                masterContext.SetContext(ammo.Name, ammo.GetCount());
+            }
 
             var allEnemies = GameObject.FindGameObjectsWithTag(m_enemyTagName);
 
@@ -51,7 +60,13 @@ namespace TenPN.DecisionFlex.Demos
         [SerializeField] private string m_enemyGOContextName = "Enemy";
         [SerializeField] private string m_enemyDistanceContextName = "EnemyDistance";
 
+        Inventory m_inventory;
+
         //////////////////////////////////////////////////
+
+        void Awake() {
+            m_inventory = GetComponent<Inventory>();
+        }
 
     }
 }
