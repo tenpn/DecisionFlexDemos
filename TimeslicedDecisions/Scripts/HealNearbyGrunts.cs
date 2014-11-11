@@ -44,7 +44,7 @@ namespace TenPN.DecisionFlex.Demos
             m_healZone = GetComponent<CircleCollider2D>();
         }
 
-        void Update()
+        void LateUpdate()
         {
             float restoredHealth = Time.deltaTime * m_healRate;
             HealNearbyGruntsBy(restoredHealth);
