@@ -80,7 +80,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400032}
   m_Layer: 8
-  m_Name: Decision
+  m_Name: DecisionFlex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

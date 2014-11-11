@@ -174,7 +174,7 @@ GameObject:
   - 114: {fileID: 409262785}
   - 114: {fileID: 409262784}
   m_Layer: 0
-  m_Name: Actions
+  m_Name: DecisionFlex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,7 +478,7 @@ GameObject:
   - 4: {fileID: 619278136}
   - 114: {fileID: 619278137}
   m_Layer: 0
-  m_Name: Work
+  m_Name: WorkAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +645,7 @@ GameObject:
   - 4: {fileID: 1091622977}
   - 114: {fileID: 1091622978}
   m_Layer: 0
-  m_Name: Exercise
+  m_Name: ExerciseAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -728,7 +728,7 @@ GameObject:
   - 114: {fileID: 1182200337}
   - 114: {fileID: 1182200338}
   m_Layer: 0
-  m_Name: Eat
+  m_Name: EatAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,7 +969,7 @@ GameObject:
   - 4: {fileID: 1743020950}
   - 114: {fileID: 1743020951}
   m_Layer: 0
-  m_Name: Drink
+  m_Name: DrinkAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ GameObject:
   - 4: {fileID: 1743199425}
   - 114: {fileID: 1743199426}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: IdleAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
