@@ -479,19 +479,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_title: Grunt DecisionFlex Demo
+  m_title: UFO DecisionFlex Demo
   m_dialog: 'This demo highlights how DecisionFlex can be used at scale, and how it
     can be used as a layer in other systems.
 
 
     The spaceship represents the player. They are swarmed by UFO creeps, and automatically
-    attack them. As their health drops, the creeps should heal at a health station
-    to the left.
+    attack them. As their health drops, the UFOs should heal at a health station to
+    the left.
 
 
     This could be implemented as a state machine, but it''s much more organic to use
-    a utility system like DecisionFlex. Critically injured grunts will move from far
-    away to the health station, but healthy grunts won''t divert even if very close.'
+    a utility system like DecisionFlex. Critically injured UFOs will move from far
+    away to the health station, but healthy UFOs won''t divert even if very close.'
 --- !u!1 &1356433669
 GameObject:
   m_ObjectHideFlags: 0

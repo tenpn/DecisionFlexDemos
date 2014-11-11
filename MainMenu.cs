@@ -64,7 +64,7 @@ namespace TenPN.DecisionFlex.Demos
             var levelNames = new string[] { 
                 "DecisionFlex_WeaponSelection", 
                 "DecisionFlex_iPerson", 
-                "DecisionFlex_Grunts" 
+                "DecisionFlex_UFOs" 
             };
             foreach(var levelName in levelNames)
             {
