@@ -40,6 +40,11 @@ namespace TenPN.DecisionFlex.Demos
                     return;
                 }
 
+                if (m_hp < newHP)
+                {
+                    m_healingAura.SetActive(true);
+                }
+
                 m_hp = newHP;
                 if (HPChange != null)
                 {
@@ -67,12 +72,21 @@ namespace TenPN.DecisionFlex.Demos
         private float m_maxHP;
         private float m_hp;
 
+        [SerializeField]
+        private GameObject m_healingAura;
+
         //////////////////////////////////////////////////
 
         void Awake()
         {
             m_hp = m_maxHP;
             Velocity = Vector3.zero;
+            m_healingAura.SetActive(false);
+        }
+
+        void Update()
+        {
+            m_healingAura.SetActive(false);
         }
     }
     
