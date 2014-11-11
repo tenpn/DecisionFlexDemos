@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
 using UnityEngine;
+using System.Collections;
 
 namespace TenPN.DecisionFlex.Demos
 {
@@ -33,7 +34,6 @@ namespace TenPN.DecisionFlex.Demos
         private static readonly int s_maxGrunts = 99;
         private Collider2D[] m_gruntCache = new Collider2D[s_maxGrunts];
         private CircleCollider2D m_attackZone;
-        private float m_timeToNextAttack = 0f;
 
         [SerializeField]
         private float m_attackStrength = 5f;
@@ -41,26 +41,37 @@ namespace TenPN.DecisionFlex.Demos
         [SerializeField]
         private float m_attackInterval = 1f;
 
+        [SerializeField]
+        private Transform m_laser;
+
         //////////////////////////////////////////////////
 
         void Start()
         {
             m_attackZone = GetComponent<CircleCollider2D>();
+            m_laser.gameObject.SetActive(false);
+            StartCoroutine(Attack());
         }
 
-        void Update()
+        IEnumerator Attack()
         {
             m_attackInterval = Mathf.Max(m_attackInterval, 1/60f);
 
-            m_timeToNextAttack -= Time.deltaTime;
-            while (m_timeToNextAttack < 0f) 
+            float timeToNextAttack = m_attackInterval;
+            
+            while(true)
             {
-                var target = FindGruntToAttack();
-                if (target != null)
+                timeToNextAttack -= Time.deltaTime;
+                if (timeToNextAttack < 0)
                 {
-                    AttackGrunt(target);
+                    var target = FindGruntToAttack();
+                    if (target != null)
+                    {
+                        StartCoroutine(AttackGrunt(target));
+                    }
+                    timeToNextAttack += m_attackInterval;
                 }
-                m_timeToNextAttack += m_attackInterval;
+                yield return null;
             }
         }
         
@@ -86,11 +97,32 @@ namespace TenPN.DecisionFlex.Demos
             }
         }
 
-        void AttackGrunt(Transform victimTransform)
+        IEnumerator AttackGrunt(Transform victimTransform)
         {
+            m_laser.position = transform.position;
+            m_laser.gameObject.SetActive(true);
+            
+            float attackDuration = m_attackInterval * 0.8f;
+            float attackTimer = 0f;
+
+            while(attackTimer <= attackDuration) {
+                float t = attackTimer / attackDuration;
+                m_laser.position =
+                    Vector3.Lerp(transform.position, victimTransform.position, t);
+
+                var toTarget = (victimTransform.position - transform.position).normalized;
+                float sign = Vector3.Dot(toTarget, Vector3.right) > 0 ? -1f : 1f;
+                float rotation = Vector3.Angle(Vector3.up, toTarget) * sign;
+                m_laser.eulerAngles = transform.eulerAngles = Vector3.forward * rotation;
+
+                attackTimer += Time.deltaTime;
+                
+                yield return null;
+            }
+
+            m_laser.gameObject.SetActive(false);
             var victim = victimTransform.GetComponent<Grunt>();
             victim.HP -= m_attackStrength;
-            Debug.DrawLine(transform.position, victimTransform.position, Color.red);
         }
     }
 }
