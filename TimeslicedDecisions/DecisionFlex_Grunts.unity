@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8b74633e6cc4bd58f268daa8db8799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spawnRate: 2
-  m_max: 10
+  m_spawnRate: 1.5
+  m_max: 20
   m_prefab: {fileID: 100006, guid: ed0ef2dbe040b4983bae8f4eb9abe2c3, type: 2}
 --- !u!4 &1229961395
 Transform:
@@ -749,5 +749,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attackStrength: 5
-  m_attackInterval: .400000006
+  m_attackInterval: .300000012
   m_laser: {fileID: 739956448}
