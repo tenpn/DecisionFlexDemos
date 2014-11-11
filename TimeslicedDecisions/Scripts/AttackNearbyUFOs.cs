@@ -26,13 +26,13 @@ using System.Collections;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/AttackNearbyGrunts")]
-    public class AttackNearbyGrunts : MonoBehaviour
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/AttackNearbyUFOs")]
+    public class AttackNearbyUFOs : MonoBehaviour
     {
         //////////////////////////////////////////////////
 
-        private static readonly int s_maxGrunts = 99;
-        private Collider2D[] m_gruntCache = new Collider2D[s_maxGrunts];
+        private static readonly int s_maxUFOs = 99;
+        private Collider2D[] m_ufoCache = new Collider2D[s_maxUFOs];
         private CircleCollider2D m_attackZone;
 
         [SerializeField]
@@ -64,10 +64,10 @@ namespace TenPN.DecisionFlex.Demos
                 timeToNextAttack -= Time.deltaTime;
                 if (timeToNextAttack < 0)
                 {
-                    var target = FindGruntToAttack();
+                    var target = FindUFOToAttack();
                     if (target != null)
                     {
-                        StartCoroutine(AttackGrunt(target));
+                        StartCoroutine(AttackUFO(target));
                     }
                     timeToNextAttack += m_attackInterval;
                 }
@@ -76,28 +76,28 @@ namespace TenPN.DecisionFlex.Demos
         }
         
         // returns null if no target
-        Transform FindGruntToAttack()
+        Transform FindUFOToAttack()
         {
-            int gruntMask = 1 << LayerMask.NameToLayer("Grunt");
+            int ufoMask = 1 << LayerMask.NameToLayer("UFO");
             float attackRadius = m_attackZone.radius;
-            int nearbyGruntCount = 
+            int nearbyUFOCount = 
                 Physics2D.OverlapCircleNonAlloc(transform.position,
                                                 attackRadius,
-                                                m_gruntCache,
-                                                gruntMask);
+                                                m_ufoCache,
+                                                ufoMask);
 
-            if (nearbyGruntCount == 0)
+            if (nearbyUFOCount == 0)
             {
                 return null;
             }
             else
             {
-                int victimIndex = Random.Range(0, nearbyGruntCount);
-                return m_gruntCache[victimIndex].transform;
+                int victimIndex = Random.Range(0, nearbyUFOCount);
+                return m_ufoCache[victimIndex].transform;
             }
         }
 
-        IEnumerator AttackGrunt(Transform victimTransform)
+        IEnumerator AttackUFO(Transform victimTransform)
         {
             m_laser.position = transform.position;
             m_laser.gameObject.SetActive(true);
@@ -121,7 +121,7 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             m_laser.gameObject.SetActive(false);
-            var victim = victimTransform.GetComponent<Grunt>();
+            var victim = victimTransform.GetComponent<UFO>();
             victim.HP -= m_attackStrength;
         }
     }

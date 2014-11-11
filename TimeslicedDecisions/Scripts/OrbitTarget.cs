@@ -31,7 +31,7 @@ namespace TenPN.DecisionFlex.Demos
     {
         //////////////////////////////////////////////////
 
-        private Grunt m_grunt;
+        private Transform m_us;
         private Transform m_target;
 
         [SerializeField]
@@ -52,13 +52,13 @@ namespace TenPN.DecisionFlex.Demos
         {
             m_target = GameObject.FindWithTag(m_targetTag).transform;
             
-            m_grunt = transform.parent.parent.GetComponent<Grunt>();
+            m_us = transform.parent.parent;
         }
 
         private void Update()
         {
-            var gruntPos = m_grunt.transform.position;
-            var toTarget = (m_target.position - gruntPos).normalized;
+            var ufoPos = m_us.position;
+            var toTarget = (m_target.position - ufoPos).normalized;
             float sign = Vector3.Dot(toTarget, Vector3.right) > 0 ? -1f : 1f;
             float currentAngle = Mathf.Deg2Rad * Vector3.Angle(Vector3.up, toTarget) * sign;
 
@@ -68,7 +68,7 @@ namespace TenPN.DecisionFlex.Demos
             var desiredPos = m_target.position + desiredRadial * m_orbitHeightForce;
 
             float maxMove = m_orbitSpeedForce * Time.deltaTime;
-            m_grunt.transform.position = Vector3.MoveTowards(gruntPos, desiredPos, maxMove);
+            m_us.position = Vector3.MoveTowards(ufoPos, desiredPos, maxMove);
         }
     }
 }

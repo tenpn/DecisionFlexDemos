@@ -26,10 +26,10 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/GruntConsiderationContextFactory")]
-    public class GruntConsiderationContextFactory : ConsiderationContextFactory
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFOConsiderationContextFactory")]
+    public class UFOConsiderationContextFactory : ConsiderationContextFactory
     {
-        // returns considerations of this grunt
+        // returns considerations of this ufo
         public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
         {
             var distanceToHealth = 
@@ -44,7 +44,7 @@ namespace TenPN.DecisionFlex.Demos
                           - m_enemyArea.radius);
             m_context.SetContext("DistanceToEnemy", distanceToEnemy);
 
-            m_context.SetContext("HP", m_grunt.NormalizedHP);
+            m_context.SetContext("HP", m_ufo.NormalizedHP);
             
             return m_allContexts;
         }
@@ -58,7 +58,7 @@ namespace TenPN.DecisionFlex.Demos
 
         private CircleCollider2D m_healthArea;
         private CircleCollider2D m_enemyArea;
-        private Grunt m_grunt;
+        private UFO m_ufo;
 
         //////////////////////////////////////////////////
 
@@ -66,7 +66,7 @@ namespace TenPN.DecisionFlex.Demos
         {
             m_healthArea = (CircleCollider2D)GameObject.FindWithTag("Health").collider2D;
             m_enemyArea = (CircleCollider2D)GameObject.FindWithTag("Enemy").collider2D;
-            m_grunt = transform.parent.GetComponent<Grunt>();
+            m_ufo = transform.parent.GetComponent<UFO>();
             m_allContexts[0] = m_context;
         }
     }

@@ -26,8 +26,8 @@ using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/Grunt")]
-    public class Grunt : MonoBehaviour
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFO")]
+    public class UFO : MonoBehaviour
     {
         public float HP
         {

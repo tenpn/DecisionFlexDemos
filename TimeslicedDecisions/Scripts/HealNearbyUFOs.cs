@@ -25,13 +25,13 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/HealNearbyGrunts")]
-    public class HealNearbyGrunts : MonoBehaviour
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/HealNearbyUFOs")]
+    public class HealNearbyUFOs : MonoBehaviour
     {
         //////////////////////////////////////////////////
 
-        private static readonly int s_maxGrunts = 99;
-        private Collider2D[] m_gruntCache = new Collider2D[s_maxGrunts];
+        private static readonly int s_maxUFOs = 99;
+        private Collider2D[] m_ufoCache = new Collider2D[s_maxUFOs];
         private CircleCollider2D m_healZone;
 
         [SerializeField]
@@ -47,23 +47,23 @@ namespace TenPN.DecisionFlex.Demos
         void LateUpdate()
         {
             float restoredHealth = Time.deltaTime * m_healRate;
-            HealNearbyGruntsBy(restoredHealth);
+            HealNearbyUFOsBy(restoredHealth);
         }
         
-        void HealNearbyGruntsBy(float restoredHealth)
+        void HealNearbyUFOsBy(float restoredHealth)
         {
-            int gruntMask = 1 << LayerMask.NameToLayer("Grunt");
+            int ufoMask = 1 << LayerMask.NameToLayer("UFO");
             float healRadius = m_healZone.radius;
-            int nearbyGruntCount = 
+            int nearbyUFOCount = 
                 Physics2D.OverlapCircleNonAlloc(transform.position,
                                                 healRadius,
-                                                m_gruntCache,
-                                                gruntMask);
+                                                m_ufoCache,
+                                                ufoMask);
 
-            for(int gruntIndex = 0; gruntIndex < nearbyGruntCount; ++gruntIndex)
+            for(int ufoIndex = 0; ufoIndex < nearbyUFOCount; ++ufoIndex)
             {
-                var nearbyGrunt = m_gruntCache[gruntIndex].GetComponent<Grunt>();
-                nearbyGrunt.HP += restoredHealth;
+                var nearbyUFO = m_ufoCache[ufoIndex].GetComponent<UFO>();
+                nearbyUFO.HP += restoredHealth;
             }
         }
     }

@@ -346,7 +346,7 @@ GameObject:
   - 114: {fileID: 1229961394}
   - 58: {fileID: 1229961393}
   m_Layer: 0
-  m_Name: Grunts
+  m_Name: UFOs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,7 +371,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229961392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c8b74633e6cc4bd58f268daa8db8799, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f712f17a20c849ab99ec5f0d2021138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnRate: 1.5
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239785670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2ce85941bce4f7c8a9b06a6d1c35b6, type: 3}
+  m_Script: {fileID: 11500000, guid: f79d31290dc71463380d679c019822d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_healRate: 5
@@ -745,7 +745,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098816781}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f673bae7566fc410f8423b512d4a8f64, type: 3}
+  m_Script: {fileID: 11500000, guid: 55c91446826f943a49b4f2783f3f4871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_attackStrength: 5

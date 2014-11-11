@@ -25,8 +25,8 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/GruntSpawner")]
-    public class GruntSpawner : MonoBehaviour
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFOSpawner")]
+    public class UFOSpawner : MonoBehaviour
     {
         //////////////////////////////////////////////////
 
@@ -61,17 +61,17 @@ namespace TenPN.DecisionFlex.Demos
 
             if (m_timeSinceLastSpawn >= spawnInterval)
             {
-                SpawnGrunt();
+                SpawnUFO();
                 m_timeSinceLastSpawn -= spawnInterval;
             }
         }
 
-        void SpawnGrunt()
+        void SpawnUFO()
         {
             var spawnPos = Random.insideUnitCircle.normalized * m_spawnZone.radius;
-            var newGrunt = (GameObject)Instantiate(m_prefab, spawnPos, Quaternion.identity);
-            newGrunt.transform.parent = transform;
-            newGrunt.name = "Grunt id:" + newGrunt.GetInstanceID();
+            var newUFO = (GameObject)Instantiate(m_prefab, spawnPos, Quaternion.identity);
+            newUFO.transform.parent = transform;
+            newUFO.name = "UFO id:" + newUFO.GetInstanceID();
         }
     }
 }

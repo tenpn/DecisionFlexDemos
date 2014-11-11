@@ -33,32 +33,32 @@ namespace TenPN.DecisionFlex.Demos
         [SerializeField]
         private Transform m_fillBar;
 
-        private Grunt m_grunt;
+        private UFO m_ufo;
 
         //////////////////////////////////////////////////
 
         void Start()
         {
-            m_grunt = transform.parent.GetComponent<Grunt>();
-            m_grunt.HPChange += OnHPChange;
+            m_ufo = transform.parent.GetComponent<UFO>();
+            m_ufo.HPChange += OnHPChange;
         }
 
         void OnDestroy()
         {
-            if (m_grunt != null)
+            if (m_ufo != null)
             {
-                m_grunt.HPChange -= OnHPChange;
+                m_ufo.HPChange -= OnHPChange;
             }
         }
 
         void OnHPChange()
         {
-            float fillWidth = m_grunt.NormalizedHP;
+            float fillWidth = m_ufo.NormalizedHP;
             var fillLocalScale = m_fillBar.localScale;
             fillLocalScale.x = fillWidth;
             m_fillBar.localScale = fillLocalScale;
 
-            float fillRightOffset = (1 - m_grunt.NormalizedHP) * -0.5f;
+            float fillRightOffset = (1 - m_ufo.NormalizedHP) * -0.5f;
             var fillLocalPos = m_fillBar.localPosition;
             fillLocalPos.x = fillRightOffset;
             m_fillBar.localPosition = fillLocalPos;
