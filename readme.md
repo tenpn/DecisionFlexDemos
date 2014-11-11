@@ -8,4 +8,4 @@ There are three demo scenes here:
 
 - WeaponSelection shows a solider pairing potential targets with current weapons, evaluating the position of each target against the strengths of each weapon, before choosing who to shoot with what.
 
-- Grunts shows DecisionFlex working at scale. A large number of small units are spawned from prefabs, and the game timeslices their decision-making power as a group. It also shows DecisionFlex running with no frame-to-frame allocations.
+- UFOs shows DecisionFlex working at scale. A large number of small units are spawned from prefabs, and the game timeslices their decision-making power as a group. It also shows DecisionFlex running with no frame-to-frame allocations.
