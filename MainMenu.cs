@@ -78,6 +78,8 @@ namespace TenPN.DecisionFlex.Demos
             }
             GUILayout.FlexibleSpace();
 
+            GUILayout.Label("Space shooter art by Kenny.nl");
+
             GUILayout.EndVertical();
             GUILayout.EndArea();
         }
