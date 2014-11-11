@@ -159,13 +159,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: Timeslicing
   m_dialog: "Even with minimum CPU load, you may still want fine control over how
-    DecisionFlex uses the CPU. \n\nWhere decisons in other scenes use MakeDecisionAtRegularIntervals
-    or MakeDecisionEveryFrame scripts to have control over responsiveness, the grunts
-    in this scene use TimeslicedDecisionMaking to manage resource usage. \n\nA timesliced
-    decision can be bucketed with specific subsets of decisions, to have fine control
-    over how classes of decisions update.\n\nJust as with almost all of DecisionFlex,
-    it's easy to extend the DecisionMaker base class to have custom control of when
-    decisions are made."
+    DecisionFlex uses the CPU. \n\nThe UFOs in this scene use a DecisionFlex script
+    called TimeslicedDecisionMaking to manage resource usage. \n\nA timesliced decision
+    can be bucketed with specific subsets of decisions, to have fine control over
+    how classes of decisions update.\n\nJust as with almost all of DecisionFlex, it's
+    easy to extend the DecisionTicker base class to have custom control of when decisions
+    are made."
 --- !u!4 &249336018
 Transform:
   m_ObjectHideFlags: 0
@@ -267,13 +266,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: Scaling DecisionFlex
   m_dialog: "This demo isn't really about the application of DecisionFlex to a problem.
-    It's about how DecisionFlex can be used easily at scale.\n\nThe grunts you see
-    swaming here are all instantiated from a prefab, and destroyed if their health
-    reaches zero. \n\nIf you use Unity Pro's profiler on a standalone* build of this
-    scene, you'd see DecisionFlex takes up hardly any time, and makes no allocations.
-    This means you can have many instances running at once without worrying about
-    CPU load or GC fragmentation.\n\n(*Profiling DecisionFlex in the editor will show
-    some allocations per frame, made to support debug information)"
+    It's about how DecisionFlex can be used easily at scale.\n\nThe UFOs you see swaming
+    here are all instantiated from a prefab, and destroyed if their health reaches
+    zero. \n\nIf you use Unity Pro's profiler on a standalone* build of this scene,
+    you'd see DecisionFlex takes up hardly any time, and makes no allocations. This
+    means you can have many instances running at once without worrying about CPU load
+    or GC fragmentation.\n\n(*Profiling DecisionFlex in the editor will show some
+    allocations per frame, made to support debug information)"
 --- !u!1 &1036811340
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,11 +484,9 @@ MonoBehaviour:
     can be used as a layer in other systems.
 
 
-    Imagine a multiplayer FPS where bots will mostly attack you, but will divert to
-    pick up ammo packs when near and when they need them. Here the grunt bots are
-    small circles, swarming around a red square bad guy. As the bad guy attacks the
-    grunts, their health bars drop. Ocassionally they will switch to swarming the
-    green health station to recharge before swapping back to the bad guy.
+    The spaceship represents the player. They are swarmed by UFO creeps, and automatically
+    attack them. As their health drops, the creeps should heal at a health station
+    to the left.
 
 
     This could be implemented as a state machine, but it''s much more organic to use
