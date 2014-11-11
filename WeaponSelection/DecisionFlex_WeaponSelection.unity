@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014e1c319854d4548af55693382c094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: Reloading the shutgun takes a long time so prefer other weapons if we're
-    getting low on ammo.
+  m_comment: "Reloading the shutgun takes a long time \nso prefer other weapons if
+    we're getting \nlow on ammo."
   m_contextName: shotgunShells
   m_responseCurve:
     serializedVersion: 2
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c022da5e034f0e9704e6e2235ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: Only distant enemies score well for sniping
+  m_comment: "Enemies too close or way too far are \ndifficult to snipe."
   m_contextName: EnemyDistance
   m_responseCurve:
     serializedVersion: 2
@@ -1065,8 +1065,8 @@ GameObject:
   - 4: {fileID: 941535525}
   - 114: {fileID: 941535529}
   - 114: {fileID: 941535526}
-  - 114: {fileID: 941535527}
   - 114: {fileID: 941535530}
+  - 114: {fileID: 941535527}
   - 114: {fileID: 941535528}
   m_Layer: 0
   m_Name: WeaponSelectionWithDecisionFlex
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c022da5e034f0e9704e6e2235ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comment: Shotguns become uneffective beyond some range.
+  m_comment: "Shotguns become uneffective beyond \nsome range."
   m_contextName: EnemyDistance
   m_responseCurve:
     serializedVersion: 2
