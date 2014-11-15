@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.8771286, y: 0, z: 0}
+  m_LocalPosition: {x: -6.98745394, y: 2.52066398, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,6 +49,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!33 &3300000
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -70,7 +73,7 @@ MonoBehaviour:
   m_waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  m_smoothTime: 1
+  m_smoothTime: 1.5
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
