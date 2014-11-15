@@ -101,7 +101,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1452301629}
-  m_RootOrder: 0
 --- !u!114 &3825135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,61 +130,6 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!1 &36005468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 36005469}
-  - 114: {fileID: 36005470}
-  m_Layer: 0
-  m_Name: 23. WeaponAction
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &36005469
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36005468}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2088936470}
-  m_RootOrder: 9
---- !u!114 &36005470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 36005468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: WeaponAction
-  m_dialog: 'There is one WeaponAction behaviour on each action gameobject. It is
-    responsible for enacting the decided-upon action through WeaponAction.Perform().
-
-
-    The action is passed the consideration context that scored so highly. In this
-    case that represents the enemy to target. The WeaponAction asks the context for
-    the transform of the target and fires.
-
-
-    In this example, there is only one WeaponAction class. But it''s feasible to have
-    many actions, each with custom code.
-
-
-
-'
 --- !u!1 &109457724
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +157,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1535968832}
-  m_RootOrder: 2
 --- !u!114 &109457726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,11 +197,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 901557443}
   - {fileID: 463304694}
+  - {fileID: 901557443}
   - {fileID: 1937110462}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!114 &142490802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +239,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1535968832}
-  m_RootOrder: 1
 --- !u!114 &148536809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +272,54 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!1 &288632458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 288632459}
+  - 114: {fileID: 288632460}
+  m_Layer: 0
+  m_Name: 14. SniperCont
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &288632459
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288632458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2088936470}
+--- !u!114 &288632460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288632458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_title: SniperAction Continued
+  m_dialog: 'OnlyWhenNoLocalDanger is a constant value that caps the sniper action''s
+    max score. This value is less than the knife max value, so the soldier will always
+    deal with nearby enemies first.
+
+
+    PreferSnipingFarEnemies is a mapped consideration that scores low for enemies
+    that are in the near-to-medium distance. Using the sniper rifle at this distance
+    is not effective, so the action score should not be high.'
+  m_image: {fileID: 2800000, guid: 24bd1092286b3490fafddbdf989cf7ab, type: 3}
 --- !u!1 &306984546
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +347,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 7
 --- !u!114 &306984548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,62 +359,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_title: User Code
-  m_dialog: 'Very little custom game-side code was required to make the solider simulation
-    work with DecisionFlex.
-
-
-    Let''s talk through the code in detail.'
---- !u!1 &354386407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 354386408}
-  - 114: {fileID: 354386409}
-  m_Layer: 0
-  m_Name: 21. WeaponSelectionConsiderationContextFactory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &354386408
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 354386407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2088936470}
-  m_RootOrder: 8
---- !u!114 &354386409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 354386407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: WeaponSelectionConsiderationContextFactory
-  m_dialog: 'A ConsiderationContext is a database of knowledge useful to the decision.
-    It is used directly by considerations.
-
-
-    WeaponSelectionConsiderationContextFactory is responsible for making the ConsiderationContext
-    for the weapon selection decision. In fact it makes one context per enemy, because
-    we are scoring the best weapon/target pair.
-
-
-    Each enemy consideration also contains the soldier''s ammo situation, using a
-    HierarchicalConsiderationContext to avoid copying.'
+  m_dialog: "Very little custom game-side code was required to make the soldier simulation
+    work with DecisionFlex.\n\nWeaponSelectionConsiderationContextFactory is a simple
+    class that finds all the enemeis in the world, and the soldier's current ammo
+    count, and makes those values visible to DecisionFlex. \n\nThere are also Action
+    behaviours to shoot weapons, which are basically just callbacks."
 --- !u!1 &418616767
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,11 +386,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 418616767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07009387, y: -2.31853724, z: 0}
+  m_LocalPosition: {x: -1.12871289, y: -1.08751583, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 6
 --- !u!1 &463304693
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,11 +417,10 @@ Transform:
   m_PrefabInternal: {fileID: 847641636}
   m_GameObject: {fileID: 463304693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.8771286, y: 0, z: 0}
+  m_LocalPosition: {x: -6.98745394, y: 2.52066398, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 142490801}
-  m_RootOrder: 1
 --- !u!23 &463304695
 Renderer:
   m_ObjectHideFlags: 0
@@ -505,8 +440,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!135 &463304696
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -578,11 +514,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 473514493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.60514235, y: -3.74532962, z: 0}
+  m_LocalPosition: {x: -2.19134355, y: -4.15567064, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 3
 --- !u!1 &537465813
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +563,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 3
 --- !u!1 &641774000
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,11 +594,8 @@ MonoBehaviour:
   m_dialog: 'The knife action has two considerations, OnlyStabNearEnemies and LastResort.
 
 
-    LastResort is a scalar consideration. It effectively ensures the knife action
-    is never scored more than a maximum value.
-
-
-    This allows firearms to always be used if available.
+    LastResort is a constant value. It ensures the knife is never scored too highly
+    - we''d always rather use something else, if practical.
 
 
     OnlyStabNearEnemies is a mapped consideration, scoring each enemy against their
@@ -681,7 +612,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 4
 --- !u!1001 &678980489
 Prefab:
   m_ObjectHideFlags: 0
@@ -764,11 +694,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 707060187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.73910522, y: .416146755, z: 0}
+  m_LocalPosition: {x: 4.87017727, y: .474767923, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 5
 --- !u!1 &740628008
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +727,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1054732570}
-  m_RootOrder: 0
 --- !u!23 &740628010
 Renderer:
   m_ObjectHideFlags: 0
@@ -817,8 +745,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!65 &740628011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -847,11 +776,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: afeb7532c65ce469499496c992fe6c0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.8771286
+      value: -6.98745394
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: afeb7532c65ce469499496c992fe6c0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.52066398
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: afeb7532c65ce469499496c992fe6c0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -929,8 +858,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!135 &901557441
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -963,7 +893,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 142490801}
-  m_RootOrder: 0
 --- !u!114 &901557444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,7 +983,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1 &941535524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1017,6 @@ Transform:
   - {fileID: 1452301629}
   - {fileID: 1535968832}
   m_Father: {fileID: 1054732570}
-  m_RootOrder: 1
 --- !u!114 &941535526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,7 +1108,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1452301629}
-  m_RootOrder: 1
 --- !u!114 &1020497186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,13 +1163,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1054732569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0420231819, y: 5.88321781, z: 0}
+  m_LocalPosition: {x: -2.67992353, y: 7.05562115, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 740628009}
   - {fileID: 941535525}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1 &1083432731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1196,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 6
 --- !u!114 &1083432733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,14 +1217,7 @@ MonoBehaviour:
     shot, so we have no concerns about low ammo.
 
 
-    OnlyWhenNoLocalDanger is a scalar consideration that effectively caps the sniper
-    action''s max score. This value is less than the knife max value, so the soldier
-    will always deal with nearby enemies first.
-
-
-    PreferSnipingFarEnemies is a mapped consideration that scores low for enemies
-    that are in the near-to-medium distance. Using the sniper rifle at this distance
-    is not effective, so the action score should not be high.'
+    ...'
   m_image: {fileID: 2800000, guid: 24bd1092286b3490fafddbdf989cf7ab, type: 3}
 --- !u!1001 &1113935034
 Prefab:
@@ -1315,11 +1232,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: afeb7532c65ce469499496c992fe6c0c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.12856102
+      value: 3.43895197
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: afeb7532c65ce469499496c992fe6c0c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.57582879
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: afeb7532c65ce469499496c992fe6c0c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1388,11 +1305,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309868841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.41614759, y: 3.32918167, z: 0}
+  m_LocalPosition: {x: -2.93681383, y: 4.61882401, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 1
 --- !u!1 &1316493235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1336,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1535968832}
-  m_RootOrder: 0
 --- !u!114 &1316493238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,7 +1382,6 @@ Transform:
   - {fileID: 3825134}
   - {fileID: 1020497185}
   m_Father: {fileID: 941535525}
-  m_RootOrder: 1
 --- !u!114 &1452301630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1547,11 +1461,8 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
   m_HDR: 0
   m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
 --- !u!4 &1495028585
 Transform:
   m_ObjectHideFlags: 0
@@ -1563,7 +1474,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!1 &1535968831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1504,6 @@ Transform:
   - {fileID: 148536808}
   - {fileID: 109457725}
   m_Father: {fileID: 941535525}
-  m_RootOrder: 2
 --- !u!114 &1535968833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1640,7 +1549,6 @@ Transform:
   - {fileID: 707060188}
   - {fileID: 418616768}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1 &1815009039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,11 +1571,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1815009039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.10202837, y: 3.03193331, z: 0}
+  m_LocalPosition: {x: 2.34342432, y: 3.9112339, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 4
 --- !u!1 &1880500680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,7 +1602,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 5
 --- !u!114 &1880500682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,7 +1652,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1936101057}
-  m_RootOrder: 1
 --- !u!114 &1901141116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,11 +1707,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1917949196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.91303444, y: -1.84294009, z: 0}
+  m_LocalPosition: {x: 2.91303444, y: -3.5429256, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 2
 --- !u!1 &1936101056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1740,6 @@ Transform:
   - {fileID: 1990002957}
   - {fileID: 1901141115}
   m_Father: {fileID: 941535525}
-  m_RootOrder: 0
 --- !u!114 &1936101058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1876,11 +1779,10 @@ Transform:
   m_PrefabInternal: {fileID: 1113935034}
   m_GameObject: {fileID: 1937110461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.12856102, y: 0, z: 0}
+  m_LocalPosition: {x: 3.43895197, y: 3.57582879, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 142490801}
-  m_RootOrder: 2
 --- !u!23 &1937110463
 Renderer:
   m_ObjectHideFlags: 0
@@ -1900,8 +1802,9 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!135 &1937110464
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1981,7 +1884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: Controls
   m_dialog: "You can pause the movement of targets at any time.\n\nSliders in the
-    top-right change the solider's ammo count. \n\nTry pausing the targets and adjusting
+    bottom-left change the soldier's ammo count. \n\nTry pausing the targets and adjusting
     ammo to see how it changes the target selection decision."
 --- !u!4 &1943972491
 Transform:
@@ -1994,7 +1897,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 2
 --- !u!1 &1959406237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +1924,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 1
 --- !u!114 &1959406239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,8 +1935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_title: DecisionFlex Solider Demo
-  m_dialog: "The solider constantly evaluates remaining ammo and enemy positions to
+  m_title: DecisionFlex Soldier Demo
+  m_dialog: "The soldier constantly evaluates remaining ammo and enemy positions to
     find a weapon/pair target representing the best decision right now. \n\nDespite
     a simple setup, the soldier is capable of making advanced decisions like only
     sniping when there are no near-by enemies, and prefering other weapons when the
@@ -2067,7 +1968,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2088936470}
-  m_RootOrder: 0
 --- !u!114 &1981495462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2079,12 +1979,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_title: DecisionFlex Solider Demo
-  m_dialog: 'In this demo, a solider is using DecisionFlex to decide what weapon to
-    use on what taget.
+  m_title: DecisionFlex Soldier Demo
+  m_dialog: 'In this demo, a soldier is using DecisionFlex to decide what weapon to
+    use on what target.
 
 
-    The solider has a knife that only works at short range, a shotgunt that is only
+    The soldier has a knife that only works at short range, a shotgun that is only
     effective to a limited range, and a sniper rifle that is only effective at long
     range.
 
@@ -2117,7 +2017,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1936101057}
-  m_RootOrder: 0
 --- !u!114 &1990002958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,7 +2058,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
 --- !u!114 &2085202783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2206,11 +2104,9 @@ Transform:
   - {fileID: 641774002}
   - {fileID: 1880500681}
   - {fileID: 1083432732}
+  - {fileID: 288632459}
   - {fileID: 306984547}
-  - {fileID: 354386408}
-  - {fileID: 36005469}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!114 &2088936471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2222,9 +2118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd15961ffee7e403e84fcb7d467fbb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rightShiftProp: -.230000004
-  m_widthProp: .5
-  m_heightProp: .75
+  m_rightShiftProp: .962000012
+  m_widthProp: .319999993
+  m_heightProp: .970000029
   m_minimisedHeight: 30
 --- !u!1 &2096676646
 GameObject:
@@ -2248,8 +2144,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2096676646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.24221706, y: -4.63707495, z: 0}
+  m_LocalPosition: {x: -8.58702278, y: -2.05778956, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1727302233}
-  m_RootOrder: 0
