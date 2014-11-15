@@ -130,11 +130,6 @@ namespace TenPN.DecisionFlex.Demos.Walkthrough
         {
             GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Minimise"))
-            {
-                m_isMaximised = false;
-            }
-
             if (GUILayout.Button("Back to main menu"))
             {
                 Time.timeScale = 1f;
