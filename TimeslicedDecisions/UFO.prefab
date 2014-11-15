@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_orbitSpeed: 2
-  m_orbitHeightForce: 4
+  m_orbitHeightForce: 3
   m_orbitSpeedForce: 5
   m_targetTag: Enemy
 --- !u!114 &11400012
