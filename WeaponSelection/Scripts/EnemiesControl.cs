@@ -29,10 +29,22 @@ namespace TenPN.DecisionFlex.Demos
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/EnemiesControl")]
     public class EnemiesControl : MonoBehaviour
     {
+        public bool Paused
+        {
+            get { return m_isExternalPause; }
+            set
+            {
+                m_isExternalPause = value;
+                RefreshPause();
+            }
+        }
+        
         //////////////////////////////////////////////////
         
         bool m_isPaused;
         IEnumerable<FollowWaypoints> m_enemies;
+        bool m_isExternalPause = false;
+        bool m_isUIPause = false;
 
         //////////////////////////////////////////////////
 
@@ -43,16 +55,21 @@ namespace TenPN.DecisionFlex.Demos
         
         void OnGUI()
         {
-            var togglePauseRect = new Rect(20f, 20f,
-                                             400f, 40f);
-            var newIsPaused = GUI.Toggle(togglePauseRect, m_isPaused, "Pause enemies");
-            if (newIsPaused != m_isPaused)
+            var togglePauseRect = new Rect(20f, 20f, 400f, 40f);
+            m_isUIPause = GUI.Toggle(togglePauseRect, m_isUIPause, "Pause enemies");
+            RefreshPause();
+        }
+
+        void RefreshPause()
+        {
+            bool isNewPause = m_isUIPause || m_isExternalPause;
+            if (isNewPause != m_isPaused)
             {
                 foreach(var enemy in m_enemies)
                 {
-                    enemy.IsPaused = newIsPaused;
+                    enemy.IsPaused = isNewPause;
                 }
-                m_isPaused = newIsPaused;
+                m_isPaused = isNewPause;
             }
         }
     }
