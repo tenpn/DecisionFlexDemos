@@ -315,9 +315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd15961ffee7e403e84fcb7d467fbb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rightShiftProp: .340000004
-  m_widthProp: .600000024
-  m_heightProp: .75
+  m_rightShiftProp: .962000012
+  m_widthProp: .319999993
+  m_heightProp: .970000029
   m_minimisedHeight: 30
 --- !u!4 &483368433
 Transform:
@@ -467,7 +467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sampleInterval: .200000003
-  m_historySize: 50
+  m_historySize: 25
+  m_screenWidthProp: .629999995
 --- !u!1 &619278135
 GameObject:
   m_ObjectHideFlags: 0
