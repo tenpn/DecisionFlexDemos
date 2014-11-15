@@ -87,8 +87,8 @@ namespace TenPN.DecisionFlex.Demos
             float inventoryUIWidth = 200f;
             float inventoryUIPadding = 10f;
 
-            float inventoryUIRectX = Screen.width - inventoryUIWidth - inventoryUIPadding;
-            float inventoryUIRectY = inventoryUIPadding;
+            float inventoryUIRectX = inventoryUIPadding;
+            float inventoryUIRectY = Screen.height - inventoryUIPadding - inventoryUIHeight;
 
             var inventoryUIRect = new Rect(inventoryUIRectX, inventoryUIRectY,
                                            inventoryUIWidth, inventoryUIHeight);
