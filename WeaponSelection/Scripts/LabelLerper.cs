@@ -50,12 +50,14 @@ namespace TenPN.DecisionFlex.Demos
 
         int m_nextID = 0;
         Dictionary<int, System.Action> m_renderers = new Dictionary<int, System.Action>();
+        EnemiesControl m_enemies;
 
         //////////////////////////////////////////////////
 
         void Awake()
         {
             s_instance = this;
+            m_enemies = FindObjectOfType<EnemiesControl>();
         }
 
         void OnDestroy()
@@ -73,6 +75,7 @@ namespace TenPN.DecisionFlex.Demos
 
         IEnumerator DoLerpLabelFromTo(string label, Vector3 fromPos, Transform toTransform)
         {
+            m_enemies.Paused = true;
             int id = m_nextID;
             ++m_nextID;
 
@@ -108,6 +111,7 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             m_renderers.Remove(id);
+            m_enemies.Paused = false;
         }
     }
 }
