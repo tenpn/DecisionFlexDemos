@@ -40,6 +40,9 @@ namespace TenPN.DecisionFlex.Demos
 
         [SerializeField] private int m_historySize = 50;
 
+        [Range(0f,1f)]
+        [SerializeField] private float m_screenWidthProp = 1f;
+
         private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;
         private Dictionary<GameObject, Queue<float>> m_actionScoreHistories = 
             new Dictionary<GameObject, Queue<float>>();
@@ -169,12 +172,12 @@ namespace TenPN.DecisionFlex.Demos
                 return;
             }
 
-            const float graphWidthProp = 0.9f;
             const float graphHeighProp = 0.85f;
-            float graphScreenWidth = Screen.width * graphWidthProp;
+            const float padding = 0.1f;
+            float graphScreenWidth = Screen.width * m_screenWidthProp;
             float graphScrenHeight = Screen.height * graphHeighProp;
 
-            var graphRect = new Rect(0.5f * (Screen.width - graphScreenWidth), 
+            var graphRect = new Rect(padding, 
                                      0.5f * (Screen.height - graphScrenHeight), 
                                      graphScreenWidth, graphScrenHeight);
 
@@ -291,9 +294,9 @@ namespace TenPN.DecisionFlex.Demos
                                                                sourceNames, 
                                                                sourceNames.Length);
 
-            GUILayout.FlexibleSpace();
-
             IsPaused = GUILayout.Toggle(IsPaused, "Pause");
+
+            GUILayout.FlexibleSpace();
 
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
