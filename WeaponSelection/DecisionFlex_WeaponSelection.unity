@@ -1149,6 +1149,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1054732570}
+  - 114: {fileID: 1054732571}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -1169,6 +1170,19 @@ Transform:
   - {fileID: 740628009}
   - {fileID: 941535525}
   m_Father: {fileID: 0}
+--- !u!114 &1054732571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054732569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9d768a558a248f0961015f44e02610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_history: 4
+  m_padding: 15
 --- !u!1 &1083432731
 GameObject:
   m_ObjectHideFlags: 0
