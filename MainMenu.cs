@@ -78,7 +78,7 @@ namespace TenPN.DecisionFlex.Demos
             }
             GUILayout.FlexibleSpace();
 
-            GUILayout.Label("Space shooter art by Kenny.nl");
+            GUILayout.Label("Space shooter art by Kenny.nl, iPerson avatar by Noble Master Games");
 
             GUILayout.EndVertical();
             GUILayout.EndArea();
