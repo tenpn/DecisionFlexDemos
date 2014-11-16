@@ -328,18 +328,13 @@ namespace TenPN.DecisionFlex.Demos
 
         private void RenderControlAroundGraph(Rect graphRect)
         {
-            const float gap = 2f;
+            const float gap = 5f;
             
-            var controlsRect = new Rect(graphRect.xMin, 2f, 
-                                        graphRect.width, graphRect.yMin - gap * 2f);
+            var controlsRect = new Rect(graphRect.xMin + gap, gap, 
+                                        graphRect.width, graphRect.yMin - gap);
 
             GUILayout.BeginArea(controlsRect);
             GUILayout.BeginHorizontal();
-
-            var sourceNames = Enum.GetNames(typeof(Source));
-            m_currentSource =  (Source)GUILayout.SelectionGrid((int)m_currentSource, 
-                                                               sourceNames, 
-                                                               sourceNames.Length);
 
             IsPaused = GUILayout.Toggle(IsPaused, "Pause");
 
