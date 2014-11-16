@@ -43,6 +43,12 @@ namespace TenPN.DecisionFlex.Demos
         [Range(0f,1f)]
         [SerializeField] private float m_screenWidthProp = 1f;
 
+        [Range(0f,1f)]
+        [SerializeField] private float m_screenHeightProp = 1f;
+
+        [Range(0f,1f)]
+        [SerializeField] private float m_screenYProp = 1f;
+
         private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;
         private Dictionary<GameObject, Queue<float>> m_actionScoreHistories = 
             new Dictionary<GameObject, Queue<float>>();
@@ -172,13 +178,12 @@ namespace TenPN.DecisionFlex.Demos
                 return;
             }
 
-            const float graphHeighProp = 0.85f;
             const float padding = 0.1f;
             float graphScreenWidth = Screen.width * m_screenWidthProp;
-            float graphScrenHeight = Screen.height * graphHeighProp;
+            float graphScrenHeight = Screen.height * m_screenHeightProp;
+            float graphY = Screen.height * m_screenYProp;
 
-            var graphRect = new Rect(padding, 
-                                     0.5f * (Screen.height - graphScrenHeight), 
+            var graphRect = new Rect(padding, graphY,
                                      graphScreenWidth, graphScrenHeight);
 
             RenderControlAroundGraph(graphRect);
