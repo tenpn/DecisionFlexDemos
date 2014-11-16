@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_targetIfNotSelf: {fileID: 0}
-  m_tickEvery: 1.25
+  m_tickEvery: 2
 --- !u!114 &941535530
 MonoBehaviour:
   m_ObjectHideFlags: 0
