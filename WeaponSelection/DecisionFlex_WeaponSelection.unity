@@ -1457,7 +1457,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .956862748, g: .956862748, b: .956862748, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -2085,6 +2085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_smoothTime: .150000006
   m_initialPause: .200000003
+  m_postPause: .5
 --- !u!1 &2088936469
 GameObject:
   m_ObjectHideFlags: 0
