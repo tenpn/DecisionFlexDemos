@@ -521,6 +521,9 @@ MonoBehaviour:
   m_screenWidthProp: .629999995
   m_screenHeightProp: .600000024
   m_screenYProp: .310000002
+  m_barsOriginProp: {x: .150000006, y: .0900000036}
+  m_barSizeProp: {x: .0700000003, y: .189999998}
+  m_sliderProp: .569999993
 --- !u!1 &619278135
 GameObject:
   m_ObjectHideFlags: 0

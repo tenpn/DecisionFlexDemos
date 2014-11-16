@@ -49,6 +49,11 @@ namespace TenPN.DecisionFlex.Demos
         [Range(0f,1f)]
         [SerializeField] private float m_screenYProp = 1f;
 
+        [SerializeField] private Vector2 m_barsOriginProp;
+        [SerializeField] private Vector2 m_barSizeProp;
+        [Range(0f,1f)]
+        [SerializeField] private float m_sliderProp;
+
         private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;
         private Dictionary<GameObject, Queue<float>> m_actionScoreHistories = 
             new Dictionary<GameObject, Queue<float>>();
@@ -171,6 +176,8 @@ namespace TenPN.DecisionFlex.Demos
 
         private void OnGUI()
         {
+            RenderAttributeBars();
+            
             int lastOffset = m_currentHistorySize - 1;
 
             if (lastOffset < 0)
@@ -207,6 +214,41 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             RenderActionsOnGraph(graphRect);
+        }
+
+        private void RenderAttributeBars()
+        {
+            float barWidth = m_barSizeProp.x * Screen.width;
+            float barHeight = Screen.height * m_barSizeProp.y;
+
+            float originX = Screen.width * m_barsOriginProp.x;
+            float originY = Screen.height * m_barsOriginProp.y;
+
+            var barRect = new Rect(originX, originY, barWidth, barHeight);
+
+            float sliderHeight = barHeight * m_sliderProp;
+            float sliderYOffset = (barHeight - sliderHeight) * 0.5f;
+
+            foreach(var attr in m_attributeHistories.Keys)
+            {
+                int pct = (int)(100*attr.Value);
+
+                var sliderRect = new Rect(barRect.xMin, barRect.yMin + sliderYOffset,
+                                          barRect.width, sliderHeight);
+                GUI.VerticalScrollbar(sliderRect, 0f, pct, 100f, 0f);
+
+                GUILayout.BeginArea(barRect);
+                GUILayout.BeginVertical();
+
+                GUILayout.Label(attr.Name);
+                GUILayout.FlexibleSpace();
+                GUILayout.Label(pct + "%");
+
+                GUILayout.EndVertical();
+                GUILayout.EndArea();
+                
+                barRect.x += barWidth;
+            }
         }
 
         private void RenderActionsOnGraph(Rect graphRect)
