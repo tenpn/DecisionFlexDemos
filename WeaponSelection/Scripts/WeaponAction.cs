@@ -33,6 +33,7 @@ namespace TenPN.DecisionFlex.Demos
         {
             var target = context.GetContext<GameObject>("Enemy");
             LabelLerper.LerpLabelFromTo(m_weaponVerb, transform.position, target.transform);
+            transform.parent.parent.GetComponent<WeaponLog>().LogAction(gameObject.name);
         }
 
         //////////////////////////////////////////////////
