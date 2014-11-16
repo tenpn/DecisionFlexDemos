@@ -47,6 +47,7 @@ namespace TenPN.DecisionFlex.Demos
 
         [SerializeField] float m_smoothTime = 3f;
         [SerializeField] float m_initialPause = 1f;
+        [SerializeField] float m_postPause = 0.5f;
 
         int m_nextID = 0;
         Dictionary<int, System.Action> m_renderers = new Dictionary<int, System.Action>();
@@ -111,6 +112,9 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             m_renderers.Remove(id);
+
+            yield return new WaitForSeconds(m_postPause);
+            
             m_enemies.Paused = false;
         }
     }
