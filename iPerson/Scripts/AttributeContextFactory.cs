@@ -38,7 +38,7 @@ namespace TenPN.DecisionFlex.Demos
         // return all person attributes
         public override IContext SingleContext(Logging loggingSetting)
         {
-            var context = new FastConsiderationContextDictionary();
+            var context = new FastContextDictionary();
 
             foreach(var attribute in m_allAttributes)
             {
