@@ -68,7 +68,7 @@ namespace TenPN.DecisionFlex.Demos
         private Source m_currentSource = Source.Attributes;
 
         private string m_pendingAction;
-        private DecisionMaker m_decisionMaker;
+        private DecisionFlex m_flex;
         bool m_isPaused = true;
 
         //////////////////////////////////////////////////
@@ -88,8 +88,8 @@ namespace TenPN.DecisionFlex.Demos
 
         private void Start()
         {
-            m_decisionMaker = transform.parent.GetComponentInChildren<DecisionMaker>();
-            m_decisionMaker.OnNewAction += OnAction;
+            m_flex = transform.parent.GetComponentInChildren<DecisionFlex>();
+            m_flex.OnNewAction += OnAction;
 
             var allActions = transform.parent.GetComponentsInChildren<Action>();
             foreach(var action in allActions)
@@ -118,7 +118,7 @@ namespace TenPN.DecisionFlex.Demos
             // let's run some early decisions to fill out data
             m_currentHistorySize = 3;
             for(int warmupIndex = 0; warmupIndex < m_currentHistorySize; ++warmupIndex) {
-                m_decisionMaker.PerformAction();
+                m_flex.PerformAction();
                 RecordActionScores();
                 RecordAttributes();
             }
@@ -151,7 +151,7 @@ namespace TenPN.DecisionFlex.Demos
 
         private void RecordActionScores()
         {
-            var allActionScores = m_decisionMaker.AllLastSelections;
+            var allActionScores = m_flex.AllLastSelections;
             bool isActionTurn = string.IsNullOrEmpty(m_pendingAction) == false;
             
             foreach(var actionScore in allActionScores)
