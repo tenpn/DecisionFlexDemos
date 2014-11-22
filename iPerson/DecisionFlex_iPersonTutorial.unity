@@ -114,99 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startingValue: .75
   m_valueDeltaPerSecond: 0
---- !u!1 &299147267
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 299147268}
-  - 114: {fileID: 299147269}
-  m_Layer: 0
-  m_Name: 00 Intro
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &299147268
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 299147267}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483368433}
---- !u!114 &299147269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 299147267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: iPerson DecisionFlex Demo
-  m_dialog: 'The iPerson demo shows the brain of a Sims-like character as they perform
-    their day-to-day actions.
-
-
-    The tickbox in the top left allows you to pause the simulation.
-
-'
---- !u!1 &414918634
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 414918635}
-  - 114: {fileID: 414918636}
-  m_Layer: 0
-  m_Name: 100 End
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &414918635
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414918634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483368433}
---- !u!114 &414918636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414918634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Simulate
-  m_dialog: "Watch the graphs move for a whie, and see how it behaves sensibly.\n\nWe
-    could have attempted this with a cascading mess of if-else statements, but then
-    it would not produce the same emergent effects, and would be much harder to iterate
-    on. Imagine if you suddenly had to add a new attribute, or a few new actions!\n\nWith
-    DecisionFlex, since considerations are set up in the editor, it can be easily
-    understood, tweaked, extended and tuned by coders and non-coders alike. \n\nif
-    you have the demo open in the editor, play with the considerations. Can you make
-    the iPerson more of a slob? Or a health freak?"
 --- !u!1 &446437099
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,54 +163,6 @@ Transform:
   m_LocalPosition: {x: -8.22625542, y: 4.96709824, z: 0}
   m_LocalScale: {x: 2.1922822, y: 2.1922822, z: 2.1922822}
   m_Children: []
-  m_Father: {fileID: 0}
---- !u!1 &483368431
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 483368433}
-  - 114: {fileID: 483368432}
-  m_Layer: 0
-  m_Name: Walkthrough
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &483368432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 483368431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd15961ffee7e403e84fcb7d467fbb3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rightShiftProp: .962000012
-  m_widthProp: .319999993
-  m_heightProp: .970000029
-  m_minimisedHeight: 30
---- !u!4 &483368433
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 483368431}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 299147268}
-  - {fileID: 790457465}
-  - {fileID: 1928263770}
-  - {fileID: 1802071452}
-  - {fileID: 1251384073}
-  - {fileID: 414918635}
   m_Father: {fileID: 0}
 --- !u!1 &536890322
 GameObject:
@@ -376,58 +235,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sampleInterval: .200000003
   m_historySize: 25
-  m_screenWidthProp: .629999995
+  m_screenWidthProp: .959999979
   m_screenHeightProp: .600000024
   m_screenYProp: .310000002
   m_barsOriginProp: {x: .150000006, y: .0900000036}
   m_barSizeProp: {x: .0700000003, y: .189999998}
   m_sliderProp: .569999993
---- !u!1 &790457463
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 790457465}
-  - 114: {fileID: 790457464}
-  m_Layer: 0
-  m_Name: 10 Concepts
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &790457464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 790457463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Concepts
-  m_dialog: 'The iPerson has four attributes. Fitness and Wealth should be high, and
-    Hunger and Thirst should be low.
-
-
-    The attributes can be changed by five actions: Drink, Eat, Exercise, Work and
-    finally Idle for when there''s nothing better to do. Most adjust just one attribute,
-    but Eating lowers fitness along with hunger.'
---- !u!4 &790457465
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 790457463}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483368433}
 --- !u!1 &1237578729
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,55 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76eb34f57b5a8468e8da77c97f3ed137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1251384072
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1251384073}
-  - 114: {fileID: 1251384074}
-  m_Layer: 0
-  m_Name: 50 Considerations2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1251384073
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1251384072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483368433}
---- !u!114 &1251384074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1251384072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Considerations
-  m_dialog: 'The score from each consideration is multiplied together to produce a
-    final score for the action. The higher the score, the more likely the action will
-    be chosen this time.
-
-
-    The Priority considerations are constant values, used to make sure some actions
-    never exceed a certain limit. If Work''s Priority is 0.75, then when HowPoor scores
-    0.8, the final score will be 0.6 (0.75 * 0.8). This means that drinking or eating
-    scores over 0.8 will always override work, even if the Sim is dirt broke.'
-  m_image: {fileID: 2800000, guid: 9a883f19601cd4d36be0e129177030e4, type: 3}
 --- !u!1 &1433462949
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,55 +373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startingValue: 0
   m_valueDeltaPerSecond: .0500000007
---- !u!1 &1802071450
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1802071452}
-  - 114: {fileID: 1802071451}
-  m_Layer: 0
-  m_Name: 40 Considerations
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1802071451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802071450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f468d988d1a7f49698e2149f8c4b2b08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Considerations
-  m_dialog: "The actions are laid out in the scene hierarchy as above. Each Action
-    object has a custom script to execute the action, but that's really just a callback.
-    \n\nUnder each action is a list of Considerations, through which DecisionFlex
-    can understand how to weigh one action against another. Most of the considerations
-    use an animation curve to convert the attribute from a % to a 0-1 value, where
-    1 means the action should be taken and 0 means it shouldn't.\n\nFor instance,
-    the HowPoor consideration converts low % Wealth into a high value, because being
-    poor means the Sim should earn more money. HowThirsty converst a high % Thirst
-    into a high value, because being thirsty means the Sim should drink."
-  m_image: {fileID: 2800000, guid: 9a883f19601cd4d36be0e129177030e4, type: 3}
---- !u!4 &1802071452
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802071450}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483368433}
 --- !u!1 &1920877029
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,48 +413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startingValue: .200000003
   m_valueDeltaPerSecond: -.00999999978
---- !u!1 &1928263768
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1928263770}
-  - 114: {fileID: 1928263769}
-  m_Layer: 0
-  m_Name: 20 Actions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1928263769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1928263768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3598a794ed5b4c49960091d4a9005b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_title: Actions
-  m_dialog: "Unpause the demo now, if you haven't already. Every few seconds, DecisionFlex
-    chooses the next action. \n\nThe graph shows you the historical values for the
-    attributes, and actions when they were taken. "
---- !u!4 &1928263770
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1928263768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483368433}
 --- !u!1 &2051526049
 GameObject:
   m_ObjectHideFlags: 0
