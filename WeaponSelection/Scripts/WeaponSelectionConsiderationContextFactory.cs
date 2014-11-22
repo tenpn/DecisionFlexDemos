@@ -34,7 +34,7 @@ namespace TenPN.DecisionFlex.Demos
     */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/" 
                       + "WeaponSelectionConsiderationContextFactory")]
-    public class WeaponSelectionConsiderationContextFactory : ConsiderationContextFactory
+    public class WeaponSelectionConsiderationContextFactory : ContextFactory
     {
         // return all enemies in turn
         public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)

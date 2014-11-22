@@ -27,10 +27,10 @@ using System.Collections.Generic;
 namespace TenPN.DecisionFlex.Demos
 {
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFOConsiderationContextFactory")]
-    public class UFOConsiderationContextFactory : ConsiderationContextFactory
+    public class UFOConsiderationContextFactory : SingleConsiderationContextFactory
     {
         // returns considerations of this ufo
-        public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
+        public override IConsiderationContext SingleContext(Logging loggingSetting)
         {
             var distanceToHealth = 
                 Mathf.Max(0f, 
@@ -45,16 +45,15 @@ namespace TenPN.DecisionFlex.Demos
             m_context.SetContext("DistanceToEnemy", distanceToEnemy);
 
             m_context.SetContext("HP", m_ufo.NormalizedHP);
-            
-            return m_allContexts;
+
+            return m_context;
         }
 
         //////////////////////////////////////////////////
 
         // avoid allocations by caching everything we can reuse
-        private ConsiderationContextDictionary m_context = 
+        private ConsiderationContextDictionary m_context =
             new ConsiderationContextDictionary();
-        private IConsiderationContext[] m_allContexts = new IConsiderationContext[1];
 
         private CircleCollider2D m_healthArea;
         private CircleCollider2D m_enemyArea;
@@ -67,7 +66,6 @@ namespace TenPN.DecisionFlex.Demos
             m_healthArea = (CircleCollider2D)GameObject.FindWithTag("Health").collider2D;
             m_enemyArea = (CircleCollider2D)GameObject.FindWithTag("Enemy").collider2D;
             m_ufo = transform.parent.GetComponent<UFO>();
-            m_allContexts[0] = m_context;
         }
     }
 }
