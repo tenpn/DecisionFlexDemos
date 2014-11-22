@@ -68,8 +68,7 @@ namespace TenPN.DecisionFlex.Demos
                 context.SetContext(m_enemyGOContextName, enemy);
                 context.SetContext(m_enemyDistanceContextName, targetDistance);
 
-                var parentedContext = 
-                    new HierarchicalConsiderationContext(context, masterContext);
+                var parentedContext = new HierarchicalContext(context, masterContext);
                 allContexts[enemyIndex] = parentedContext;
             }
 
