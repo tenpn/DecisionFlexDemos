@@ -32,9 +32,9 @@ namespace TenPN.DecisionFlex.Demos
         This means we can pick the best weapon-enemy pair to shoot with-at.
         Each context also has full ammo information, using a hierarchical context.
     */
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/" 
-                      + "WeaponSelectionConsiderationContextFactory")]
-    public class WeaponSelectionConsiderationContextFactory : ContextFactory
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/"
+                      + "WeaponSelectionContextFactory")]
+    public class WeaponSelectionContextFactory : ContextFactory
     {
         // return all enemies in turn
         public override IList<IContext> AllContexts(Logging loggingSetting)
