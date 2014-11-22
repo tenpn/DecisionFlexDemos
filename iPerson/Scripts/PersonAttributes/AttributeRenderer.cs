@@ -344,11 +344,9 @@ namespace TenPN.DecisionFlex.Demos
             GUILayout.EndArea();
         }
 
-        private void OnAction(float score, 
-                              GameObject actionsObject, 
-                              IConsiderationContext context)
+        private void OnAction(ActionSelection winningAction)
         {
-            m_pendingAction = actionsObject.name;
+            m_pendingAction = winningAction.ToString();
         }
 
         private Vector2 CalculateScreenCoord(int historyIndex,
