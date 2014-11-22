@@ -37,7 +37,7 @@ namespace TenPN.DecisionFlex.Demos
     public class WeaponSelectionConsiderationContextFactory : ContextFactory
     {
         // return all enemies in turn
-        public override IList<IConsiderationContext> AllContexts(Logging loggingSetting)
+        public override IList<IContext> AllContexts(Logging loggingSetting)
         {
             var masterContext = new ConsiderationContextDictionary();
 
@@ -49,7 +49,7 @@ namespace TenPN.DecisionFlex.Demos
 
             var allEnemies = GameObject.FindGameObjectsWithTag(m_enemyTagName);
 
-            var allContexts = new IConsiderationContext[allEnemies.Length];
+            var allContexts = new IContext[allEnemies.Length];
 
             for(int enemyIndex = 0; enemyIndex < allEnemies.Length; ++enemyIndex)
             {

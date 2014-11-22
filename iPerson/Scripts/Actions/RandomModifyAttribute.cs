@@ -29,7 +29,7 @@ namespace TenPN.DecisionFlex.Demos
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/RandomModifyAttribute")]
     public class RandomModifyAttribute : Action
     {
-        public override void Perform(IConsiderationContext context)
+        public override void Perform(IContext context)
         {
             m_target.BoostAttribute(GetNextModify());
         }

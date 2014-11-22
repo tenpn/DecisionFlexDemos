@@ -29,7 +29,7 @@ namespace TenPN.DecisionFlex.Demos
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/WeaponAction")]
     public class WeaponAction : Action
     {
-        public override void Perform(IConsiderationContext context)
+        public override void Perform(IContext context)
         {
             var target = context.GetContext<GameObject>("Enemy");
             LabelLerper.LerpLabelFromTo(m_weaponVerb, transform.position, target.transform);

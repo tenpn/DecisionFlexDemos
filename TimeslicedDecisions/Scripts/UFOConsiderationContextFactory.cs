@@ -30,7 +30,7 @@ namespace TenPN.DecisionFlex.Demos
     public class UFOConsiderationContextFactory : SingleContextFactory
     {
         // returns considerations of this ufo
-        public override IConsiderationContext SingleContext(Logging loggingSetting)
+        public override IContext SingleContext(Logging loggingSetting)
         {
             var distanceToHealth = 
                 Mathf.Max(0f, 
