@@ -33,7 +33,7 @@ namespace TenPN.DecisionFlex.Demos
        for the iPerson demo. Pushes the iPerson attributes into a single IConsiderationContext
     */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/Attribute ContextFactory")]
-    public class AttributeContextFactory : SingleConsiderationContextFactory
+    public class AttributeContextFactory : SingleContextFactory
     {
         // return all person attributes
         public override IConsiderationContext SingleContext(Logging loggingSetting)

@@ -27,7 +27,7 @@ using System.Collections.Generic;
 namespace TenPN.DecisionFlex.Demos
 {
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFOConsiderationContextFactory")]
-    public class UFOConsiderationContextFactory : SingleConsiderationContextFactory
+    public class UFOConsiderationContextFactory : SingleContextFactory
     {
         // returns considerations of this ufo
         public override IConsiderationContext SingleContext(Logging loggingSetting)
