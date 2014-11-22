@@ -563,11 +563,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 619278135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d29683c13084e64bdd288a8d3b5085, type: 3}
+  m_Script: {fileID: 11500000, guid: 359541d50fba644ee9e1d230da111b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_minModify: 0
-  m_maxModify: .100000001
+  m_boostValue: .0399999991
   m_target: {fileID: 1920877031}
 --- !u!1 &625090452
 GameObject:
