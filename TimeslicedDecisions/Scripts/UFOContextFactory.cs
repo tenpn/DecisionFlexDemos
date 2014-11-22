@@ -26,8 +26,9 @@ using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
-    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFOConsiderationContextFactory")]
-    public class UFOConsiderationContextFactory : SingleContextFactory
+    //! logs HP, distance to enemy and distance to health
+    [AddComponentMenu("TenPN/DecisionFlex/Demos/Timesliced/UFOContextFactory")]
+    public class UFOContextFactory : SingleContextFactory
     {
         // returns considerations of this ufo
         public override IContext SingleContext(Logging loggingSetting)
