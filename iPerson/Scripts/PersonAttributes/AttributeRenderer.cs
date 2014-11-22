@@ -89,7 +89,10 @@ namespace TenPN.DecisionFlex.Demos
         private void Start()
         {
             m_flex = transform.parent.GetComponentInChildren<DecisionFlex>();
-            m_flex.OnNewAction += OnAction;
+            if (m_flex != null)
+            {
+                m_flex.OnNewAction += OnAction;
+            }
 
             var allActions = transform.parent.GetComponentsInChildren<Action>();
             foreach(var action in allActions)
@@ -118,8 +121,11 @@ namespace TenPN.DecisionFlex.Demos
             // let's run some early decisions to fill out data
             m_currentHistorySize = 3;
             for(int warmupIndex = 0; warmupIndex < m_currentHistorySize; ++warmupIndex) {
-                m_flex.PerformAction();
-                RecordActionScores();
+                if (m_flex != null)
+                {
+                    m_flex.PerformAction();
+                    RecordActionScores();
+                }
                 RecordAttributes();
             }
 
@@ -128,7 +134,10 @@ namespace TenPN.DecisionFlex.Demos
                 // could use InvokeRepeating here, but then you couldn't
                 // fiddle with the sample interval in the editor during play.
                 m_currentHistorySize = Mathf.Min(m_currentHistorySize + 1, m_historySize);
-                RecordActionScores();
+                if (m_flex != null)
+                {
+                    RecordActionScores();
+                }
                 RecordAttributes();
                 yield return new WaitForSeconds(m_sampleInterval);
                 yield return new WaitForEndOfFrame();
