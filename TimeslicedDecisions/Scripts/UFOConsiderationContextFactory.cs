@@ -52,8 +52,7 @@ namespace TenPN.DecisionFlex.Demos
         //////////////////////////////////////////////////
 
         // avoid allocations by caching everything we can reuse
-        private ConsiderationContextDictionary m_context =
-            new ConsiderationContextDictionary();
+        private ContextDictionary m_context = new ContextDictionary();
 
         private CircleCollider2D m_healthArea;
         private CircleCollider2D m_enemyArea;

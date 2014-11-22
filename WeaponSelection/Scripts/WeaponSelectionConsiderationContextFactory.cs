@@ -39,7 +39,7 @@ namespace TenPN.DecisionFlex.Demos
         // return all enemies in turn
         public override IList<IContext> AllContexts(Logging loggingSetting)
         {
-            var masterContext = new ConsiderationContextDictionary();
+            var masterContext = new ContextDictionary();
 
             var inventoryContents = m_inventory.CalculateInventoryContents();
             foreach(var ammo in inventoryContents)
@@ -54,7 +54,7 @@ namespace TenPN.DecisionFlex.Demos
             for(int enemyIndex = 0; enemyIndex < allEnemies.Length; ++enemyIndex)
             {
                 var enemy = allEnemies[enemyIndex];
-                var context = new ConsiderationContextDictionary();
+                var context = new ContextDictionary();
         
                 float targetDistance = Vector3.Distance(transform.position,
                                                         enemy.transform.position);
