@@ -296,9 +296,11 @@ namespace TenPN.DecisionFlex.Demos
                                         GraphParameters baseGraph,
                                         Func<T,string> toString)
         {
-            var yValuesList = histories.Values.Select(
-                yValues => yValues.ToArray())
-                .ToArray();
+            var yValuesList = new List<IList<float>>();
+            foreach(var value in histories.Values)
+            {
+                yValuesList.Add(value.ToArray());
+            }
             baseGraph.YValuesList = yValuesList;
             GraphRenderer.Instance.RenderGraph(baseGraph);
 
@@ -307,7 +309,7 @@ namespace TenPN.DecisionFlex.Demos
                 var key = history.Key;
                 var scores = history.Value;
             
-                var lastInterestingIndexValue = LastNotableValueIn(scores);
+                var lastInterestingIndexValue = LastNotableValueIn(scores.ToArray());
                 var screenCoord = CalculateScreenCoord(lastInterestingIndexValue.Key,
                                                        lastInterestingIndexValue.Value,
                                                        baseGraph.ScreenBounds);
@@ -319,20 +321,18 @@ namespace TenPN.DecisionFlex.Demos
             }
         }
 
-        private KeyValuePair<int,float> LastNotableValueIn(IEnumerable<float> values)
+        private KeyValuePair<int,float> LastNotableValueIn(IList<float> values)
         {
-            int index = values.Count();
-            foreach(var value in values.Reverse())
+            for(int index = values.Count-1; index >= 0; --index)
             {
-                --index;
-                if (value > 0f)
+                if (values[index] > 0f)
                 {
-                    return new KeyValuePair<int,float>(index, value);
+                    return new KeyValuePair<int,float>(index, values[index]);
                 }
             }
 
             // just go with last value
-            return new KeyValuePair<int,float>(values.Count()-1, values.Last());
+            return new KeyValuePair<int,float>(values.Count-1, values[values.Count-1]);
         }
 
         private void RenderControlAroundGraph(Rect graphRect)
