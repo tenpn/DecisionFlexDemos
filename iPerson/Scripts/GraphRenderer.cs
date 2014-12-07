@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +34,23 @@ namespace TenPN.DecisionFlex.Demos
         public IList<IList<float>> YValuesList;
         public IList<float> XValues;
         public IEnumerator<Color> Cols;
+
+        // x is min, y is max
+        public Vector2 GetYValuesMinMax()
+        {
+            Vector2 minMax = new Vector2(float.MaxValue, -float.MaxValue);
+            for(int listIndex = 0; listIndex < YValuesList.Count; ++listIndex)
+            {
+                var values = YValuesList[listIndex];
+                for(int yIndex = 0; yIndex < values.Count; ++yIndex)
+                {
+                    float yValue = values[yIndex];
+                    minMax.x = Mathf.Min(minMax.x, yValue);
+                    minMax.y = Mathf.Max(minMax.y, yValue);
+                }
+            }
+            return minMax;
+        }
     }
 
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/GraphRenderer")]
@@ -76,7 +92,7 @@ namespace TenPN.DecisionFlex.Demos
 
         void OnPostRender()
         {
-            while(m_graphs.Any())
+            while(m_graphs.Count > 0)
             {
                 var graph = m_graphs.Dequeue();
                 PostRenderGraph(graph);
@@ -105,14 +121,14 @@ namespace TenPN.DecisionFlex.Demos
                          normScreenGraphWidth, normScreenGraphHeight);
 
             bool isYRangeManuallySet = graph.YValuesMinMax != Vector2.zero;
-            float minYValue = isYRangeManuallySet ? graph.YValuesMinMax.x
-                : graph.YValuesList.SelectMany(yValues => yValues).Min();
-            float maxYValue = isYRangeManuallySet ? graph.YValuesMinMax.y
-                : graph.YValuesList.SelectMany(yValues => yValues).Max();
+            var graphMinMax = graph.GetYValuesMinMax();
+            float minYValue = isYRangeManuallySet ? graph.YValuesMinMax.x : graphMinMax.x;
+            float maxYValue = isYRangeManuallySet ? graph.YValuesMinMax.y : graphMinMax.y;
             float yScale = normalizedGraphScreenRect.height/(maxYValue - minYValue);
 
+            float lastX = graph.XValues[graph.XValues.Count-1];
             float xScale = normalizedGraphScreenRect.width
-                /(graph.XValues.Last()- graph.XValues[0]);
+                /(lastX- graph.XValues[0]);
 
             Func<float,float,Vector2> graphToGLCoord = (xValue, yValue) => 
                 new Vector2(normalizedGraphScreenRect.x + xValue * xScale, 
@@ -124,9 +140,9 @@ namespace TenPN.DecisionFlex.Demos
             GL.Color(new Color(0.1f, 0.1f, 0.1f, 0.2f));
 
             GL.Vertex(graphToGLCoord(graph.XValues[0], minYValue));
-            GL.Vertex(graphToGLCoord(graph.XValues.Last(), minYValue));
+            GL.Vertex(graphToGLCoord(lastX, minYValue));
             GL.Vertex(graphToGLCoord(graph.XValues[0], maxYValue));
-            GL.Vertex(graphToGLCoord(graph.XValues.Last(), maxYValue));
+            GL.Vertex(graphToGLCoord(lastX, maxYValue));
             GL.End();
 
             // vertical bars
