@@ -63,8 +63,8 @@ namespace TenPN.DecisionFlex.Demos
 
         private void Awake()
         {
-            m_healthArea = (CircleCollider2D)GameObject.FindWithTag("Health").collider2D;
-            m_enemyArea = (CircleCollider2D)GameObject.FindWithTag("Enemy").collider2D;
+            m_healthArea = (CircleCollider2D)GameObject.FindWithTag("Health").GetComponent<Collider2D>();
+            m_enemyArea = (CircleCollider2D)GameObject.FindWithTag("Enemy").GetComponent<Collider2D>();
             m_ufo = transform.parent.GetComponent<UFO>();
         }
     }
