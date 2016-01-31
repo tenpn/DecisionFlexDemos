@@ -67,21 +67,8 @@ namespace TenPN.DecisionFlex.Demos
 
         Queue<GraphParameters> m_graphs = new Queue<GraphParameters>();
 
-        Material s_graphMat;
-
-        Material GraphMat
-        {
-            get
-            {
-                if (s_graphMat == null)
-                {
-                    s_graphMat = new Material("Shader \"Lines/Colored Blended\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha BindChannels { Bind \"Color\",color } ZWrite On Cull Front Fog { Mode Off } } } }"); 
-                    s_graphMat.hideFlags = HideFlags.HideAndDontSave; 
-                    s_graphMat.shader.hideFlags = HideFlags.HideAndDontSave;
-                }
-                return s_graphMat;
-            }
-        }
+        [SerializeField]
+        Material graphMat;
 
         //////////////////////////////////////////////////
 
@@ -108,7 +95,7 @@ namespace TenPN.DecisionFlex.Demos
             }
 
             GL.PushMatrix();
-            GraphMat.SetPass(0);
+            graphMat.SetPass(0);
             GL.LoadOrtho();
 
             float normScreenGraphXMin = graph.ScreenBounds.x/Screen.width;
