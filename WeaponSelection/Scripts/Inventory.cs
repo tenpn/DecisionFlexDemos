@@ -21,10 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
-
 using UnityEngine;
-using System.Reflection;
-using System.Collections.Generic;
 
 namespace TenPN.DecisionFlex.Demos
 {
@@ -32,52 +29,9 @@ namespace TenPN.DecisionFlex.Demos
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/Inventory")]
     public class Inventory : MonoBehaviour
     {
-        public struct Ammo
-        {
-            public string Name;
-
-            public int GetCount()
-            {
-                return (int) Field.GetValue(Inventory);
-            }
-
-            public void SetCount(int newCount)
-            {
-                Field.SetValue(Inventory, newCount);
-            }
-
-            public FieldInfo Field;
-            public Inventory Inventory;
-        }
-
-        public IEnumerable<Ammo> CalculateInventoryContents()
-        {
-            var contents = new List<Ammo>();
-
-            var allInventoryFields = GetType().GetFields(
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            foreach(var inventoryField in allInventoryFields)
-            {
-                string contextName = inventoryField.Name.StartsWith("m_")
-                    ? inventoryField.Name.Substring(2)
-                    : inventoryField.Name;
-
-                contents.Add(new Ammo {
-                        Name = contextName,
-                        Field = inventoryField,
-                        Inventory = this,
-                    });
-            }
-
-            return contents;
-        }
-
-        //////////////////////////////////////////////////
-
-        [SerializeField] int m_shotgunShells;
-        [SerializeField] int m_fiftyCalRounds;
-
+        public int ShotgunShells;
+        public int FiftyCalRounds;
+        
         //////////////////////////////////////////////////
 
         private void OnGUI()
@@ -97,25 +51,24 @@ namespace TenPN.DecisionFlex.Demos
             GUILayout.Label("Ammo");
             GUILayout.FlexibleSpace();
 
-            var contents = CalculateInventoryContents();
-            foreach(var ammo in contents)
-            {
-                GUILayout.BeginHorizontal();
-
-                int currentCount = ammo.GetCount();
-                GUILayout.Label(ammo.Name + ": " + currentCount);
-
-                int minAmmo = 0;
-                int maxAmmo = 20;
-                int newCount = (int)GUILayout.HorizontalSlider(currentCount, 
-                                                               minAmmo, maxAmmo);
-                ammo.SetCount(newCount);
-                                
-                GUILayout.EndHorizontal();
-            }
-
-            GUILayout.EndArea();
+            ShotgunShells = AmmoUI("shotgunShells", ShotgunShells);
+            FiftyCalRounds = AmmoUI("fiftyCalRounds", FiftyCalRounds);
             
+            GUILayout.EndArea();
+        }
+
+        // returns new value
+        private int AmmoUI(string name, int currentCount) {
+            GUILayout.BeginHorizontal();
+
+            GUILayout.Label(name + ": " + currentCount);
+
+            int minAmmo = 0;
+            int maxAmmo = 20;
+            int newCount = (int)GUILayout.HorizontalSlider(currentCount, 
+                                                           minAmmo, maxAmmo);
+            GUILayout.EndHorizontal();
+            return newCount;
         }
     }
 }

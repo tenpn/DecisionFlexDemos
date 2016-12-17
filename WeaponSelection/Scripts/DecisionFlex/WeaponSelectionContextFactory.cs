@@ -35,16 +35,19 @@ namespace TenPN.DecisionFlex.Demos
                       + "WeaponSelectionContextFactory")]
     public class WeaponSelectionContextFactory : ContextFactory
     {
-        // return all enemies in turn
+        /**
+           returns a list of IContexts, one for each enemy we might attack
+        */
         public override IList<IContext> AllContexts(Logging loggingSetting)
         {
+            // my ammo information stays the same for all enemies,
+            // so we write it once, into the "master" context:
+            
             var masterContext = new ContextDictionary();
+            masterContext.SetContext("shotgunShells", m_inventory.ShotgunShells);
+            masterContext.SetContext("fiftyCalRounds", m_inventory.FiftyCalRounds);
 
-            var inventoryContents = m_inventory.CalculateInventoryContents();
-            foreach(var ammo in inventoryContents)
-            {
-                masterContext.SetContext(ammo.Name, ammo.GetCount());
-            }
+            // now find all enemies and, for each, find out the stats we need
 
             var allEnemies = GameObject.FindGameObjectsWithTag(m_enemyTagName);
 
@@ -67,6 +70,9 @@ namespace TenPN.DecisionFlex.Demos
                 context.SetContext(m_enemyGOContextName, enemy);
                 context.SetContext(m_enemyDistanceContextName, targetDistance);
 
+                // context has the solider stats, and masterContext has the ammo,
+                // so combine them:
+                
                 var parentedContext = new HierarchicalContext(context, masterContext);
                 allContexts[enemyIndex] = parentedContext;
             }
