@@ -36,7 +36,7 @@ namespace TenPN.DecisionFlex.Demos
         */
         public override void Perform(IContext context)
         {
-            // find the target
+            // find the target that DecisionFlex chose:
             var target = context.GetContext<GameObject>("Enemy");
             // fires a "bullet" across the screen
             LabelLerper.LerpLabelFromTo(m_weaponVerb, transform.position, target.transform);

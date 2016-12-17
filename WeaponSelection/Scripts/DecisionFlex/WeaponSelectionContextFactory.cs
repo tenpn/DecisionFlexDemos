@@ -49,32 +49,31 @@ namespace TenPN.DecisionFlex.Demos
 
             // now find all enemies and, for each, find out the stats we need
 
-            var allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var allContexts = new List<IContext>();
 
-            var allContexts = new IContext[allEnemies.Length];
-
-            for(int enemyIndex = 0; enemyIndex < allEnemies.Length; ++enemyIndex)
+            foreach(var enemy in m_enemies)
             {
-                var enemy = allEnemies[enemyIndex];
-                var context = new ContextDictionary();
-        
-                float targetDistance = Vector3.Distance(transform.position,
-                                                        enemy.transform.position);
+                var enemyContext = new ContextDictionary();
+                
+                float enemyDistance =
+                    Vector3.Distance(transform.position, enemy.transform.position);
+                
+                enemyContext.SetContext("Enemy", enemy);
+                enemyContext.SetContext("EnemyDistance", enemyDistance);
 
+                // enemyContext has the solider stats, and masterContext has the ammo,
+                // so combine them:
+                
+                var parentedContext = new HierarchicalContext(enemyContext, masterContext);
+                allContexts.Add(parentedContext);
+
+                // 
+                
                 if (loggingSetting == Logging.Enabled)
                 {
                     Debug.Log("considering enemy " + enemy.name + " at distance " 
-                              + targetDistance);
+                              + enemyDistance);
                 }
-
-                context.SetContext("Enemy", enemy);
-                context.SetContext("EnemyDistance", targetDistance);
-
-                // context has the solider stats, and masterContext has the ammo,
-                // so combine them:
-                
-                var parentedContext = new HierarchicalContext(context, masterContext);
-                allContexts[enemyIndex] = parentedContext;
             }
 
             return allContexts;
@@ -83,12 +82,14 @@ namespace TenPN.DecisionFlex.Demos
         //////////////////////////////////////////////////
 
         Inventory m_inventory;
+        GameObject[] m_enemies;
 
         //////////////////////////////////////////////////
 
         void Awake()
         {
             m_inventory = GetComponent<Inventory>();
+            m_enemies = GameObject.FindGameObjectsWithTag("Enemy");
         }
 
     }
