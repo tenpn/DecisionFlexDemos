@@ -49,7 +49,7 @@ namespace TenPN.DecisionFlex.Demos
 
             // now find all enemies and, for each, find out the stats we need
 
-            var allEnemies = GameObject.FindGameObjectsWithTag(m_enemyTagName);
+            var allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
             var allContexts = new IContext[allEnemies.Length];
 
@@ -67,8 +67,8 @@ namespace TenPN.DecisionFlex.Demos
                               + targetDistance);
                 }
 
-                context.SetContext(m_enemyGOContextName, enemy);
-                context.SetContext(m_enemyDistanceContextName, targetDistance);
+                context.SetContext("Enemy", enemy);
+                context.SetContext("EnemyDistance", targetDistance);
 
                 // context has the solider stats, and masterContext has the ammo,
                 // so combine them:
@@ -81,10 +81,6 @@ namespace TenPN.DecisionFlex.Demos
         }
 
         //////////////////////////////////////////////////
-
-        [SerializeField] private string m_enemyTagName = "Enemy";
-        [SerializeField] private string m_enemyGOContextName = "Enemy";
-        [SerializeField] private string m_enemyDistanceContextName = "EnemyDistance";
 
         Inventory m_inventory;
 

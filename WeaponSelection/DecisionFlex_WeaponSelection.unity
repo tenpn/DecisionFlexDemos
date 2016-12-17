@@ -867,9 +867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113dc62ca21db44e3900ec8085b86113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyTagName: Enemy
-  m_enemyGOContextName: Enemy
-  m_enemyDistanceContextName: EnemyDistance
 --- !u!114 &941535528
 MonoBehaviour:
   m_ObjectHideFlags: 0
