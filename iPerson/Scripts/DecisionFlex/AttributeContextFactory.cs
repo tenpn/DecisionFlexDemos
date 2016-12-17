@@ -21,16 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
-using System;
 using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace TenPN.DecisionFlex.Demos
 {
     /**
        \brief
-       for the iPerson demo. Pushes the iPerson attributes into a single IContext
+       for the iPerson demo. Pushes what we know about the world into DFlex's database.
     */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/Attribute ContextFactory")]
     public class AttributeContextFactory : SingleContextFactory
@@ -39,25 +36,31 @@ namespace TenPN.DecisionFlex.Demos
         public override IContext SingleContext(Logging loggingSetting)
         {
             var context = new ContextDictionary();
+            
+            float currentFitness = person.GetAttribute(Attribute.Fitness);
+            context.SetContext(Attribute.Fitness.ToString(), currentFitness);
 
-            foreach(var attribute in m_allAttributes)
-            {
-                context.SetContext(attribute.Name, attribute.Value);
-            }
+            float currentHunger = person.GetAttribute(Attribute.Hunger);
+            context.SetContext(Attribute.Hunger.ToString(), currentHunger);
 
+            float currentThirst = person.GetAttribute(Attribute.Thirst);
+            context.SetContext(Attribute.Thirst.ToString(), currentThirst);
+
+            float currentWealth = person.GetAttribute(Attribute.Wealth);
+            context.SetContext(Attribute.Wealth.ToString(), currentWealth);
+            
             return context;
         }
 
         //////////////////////////////////////////////////
 
-        private IEnumerable<PersonAttribute> m_allAttributes;
+        private iPerson person;
 
         //////////////////////////////////////////////////
 
         private void Awake()
         {
-            m_allAttributes = gameObject.transform.parent
-                .GetComponentsInChildren<PersonAttribute>();
+            person = GetComponentInParent<iPerson>();
         }
     }
 }

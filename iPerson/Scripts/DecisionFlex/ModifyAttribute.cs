@@ -22,24 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
 using UnityEngine;
-using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    /**
+       Callback for DecisionFlex to modify a single attribute, through the Perform() func
+    */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/ModifyAttribute")]
     public class ModifyAttribute : Action
     {
         public override void Perform(IContext context)
         {
-            m_target.BoostAttribute(m_boostValue);
+            m_person.BoostAttribute(m_target, m_boostValue);
         }
 
         //////////////////////////////////////////////////
 
         [SerializeField] private float m_boostValue;
-        [SerializeField] private PersonAttribute m_target;
+        [SerializeField] private Attribute m_target;
+        private iPerson m_person;
 
         //////////////////////////////////////////////////
 
+        private void Awake()
+        {
+            m_person = GetComponentInParent<iPerson>();
+        }
     }
 }

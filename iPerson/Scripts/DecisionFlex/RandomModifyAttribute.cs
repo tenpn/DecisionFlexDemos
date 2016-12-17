@@ -22,16 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
 using UnityEngine;
-using System;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    /**
+       Callback for DecisionFlex to modify a single attribute, through the Perform() func
+    */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/iPerson/RandomModifyAttribute")]
     public class RandomModifyAttribute : Action
     {
         public override void Perform(IContext context)
         {
-            m_target.BoostAttribute(GetNextModify());
+            float randomBoost = Random.Range(m_minModify, m_maxModify);
+            m_person.BoostAttribute(m_target, randomBoost);
         }
     
         //////////////////////////////////////////////////
@@ -41,10 +44,17 @@ namespace TenPN.DecisionFlex.Demos
         [Range(-1f,1f)]
         [SerializeField] private float m_maxModify;
 
-        [SerializeField] private PersonAttribute m_target;
+        [SerializeField] private Attribute m_target;
+        
+        private iPerson m_person;
 
         //////////////////////////////////////////////////
 
+        private void Awake()
+        {
+            m_person = GetComponentInParent<iPerson>();
+        }
+        
         private float GetNextModify()
         {
             float range = m_maxModify - m_minModify;

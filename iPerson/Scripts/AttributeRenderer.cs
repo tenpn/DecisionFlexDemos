@@ -54,7 +54,8 @@ namespace TenPN.DecisionFlex.Demos
         [Range(0f,1f)]
         [SerializeField] private float m_sliderProp;
 
-        private Dictionary<PersonAttribute, Queue<float>> m_attributeHistories;
+        private iPerson person;
+        private Dictionary<Attribute, Queue<float>> m_attributeHistories;
         private Dictionary<GameObject, Queue<float>> m_actionScoreHistories = 
             new Dictionary<GameObject, Queue<float>>();
         private Queue<string> m_actionsHistory = new Queue<string>();
@@ -69,7 +70,7 @@ namespace TenPN.DecisionFlex.Demos
 
         private string m_pendingAction;
         private DecisionFlex m_flex;
-        bool m_isPaused = true;
+        private bool m_isPaused = true;
 
         //////////////////////////////////////////////////
 
@@ -77,10 +78,10 @@ namespace TenPN.DecisionFlex.Demos
         {
             IsPaused = m_isPaused;
 
-            var attributes = GetComponentsInChildren<PersonAttribute>();
+            person = GetComponentInParent<iPerson>();
 
-            m_attributeHistories = new Dictionary<PersonAttribute, Queue<float>>();
-            foreach(var attribute in attributes)
+            m_attributeHistories = new Dictionary<Attribute, Queue<float>>();
+            foreach(var attribute in iPerson.Attributes) 
             {
                 m_attributeHistories[attribute] = new Queue<float>();
             }
@@ -151,7 +152,7 @@ namespace TenPN.DecisionFlex.Demos
                 var attribute = attributeHistory.Key;
                 var history = attributeHistory.Value;
 
-                PushWithRestrictedSize(attribute.Value, history);
+                PushWithRestrictedSize(person.GetAttribute(attribute), history);
             }
 
             PushWithRestrictedSize(m_pendingAction, m_actionsHistory);
@@ -215,7 +216,7 @@ namespace TenPN.DecisionFlex.Demos
 
             if (m_currentSource == Source.Attributes)
             {
-                RenderHistories(m_attributeHistories, baseGraph, att => att.Name);
+                RenderHistories(m_attributeHistories, baseGraph, att => att.ToString());
             }
             else
             {
@@ -240,7 +241,7 @@ namespace TenPN.DecisionFlex.Demos
 
             foreach(var attr in m_attributeHistories.Keys)
             {
-                int pct = (int)(100*attr.Value);
+                int pct = (int)(100*person.GetAttribute(attr));
 
                 var sliderRect = new Rect(barRect.xMin, barRect.yMin + sliderYOffset,
                                           barRect.width, sliderHeight);
@@ -249,7 +250,7 @@ namespace TenPN.DecisionFlex.Demos
                 GUILayout.BeginArea(barRect);
                 GUILayout.BeginVertical();
 
-                GUILayout.Label(attr.Name);
+                GUILayout.Label(attr.ToString());
                 GUILayout.FlexibleSpace();
                 GUILayout.Label(pct + "%");
 
