@@ -58,7 +58,8 @@ namespace TenPN.DecisionFlex.Demos
         }
 
         // returns new value
-        private int AmmoUI(string name, int currentCount) {
+        private int AmmoUI(string name, int currentCount)
+        {
             GUILayout.BeginHorizontal();
 
             GUILayout.Label(name + ": " + currentCount);

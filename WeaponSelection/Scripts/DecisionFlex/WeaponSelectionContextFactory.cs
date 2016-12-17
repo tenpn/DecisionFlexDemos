@@ -90,7 +90,8 @@ namespace TenPN.DecisionFlex.Demos
 
         //////////////////////////////////////////////////
 
-        void Awake() {
+        void Awake()
+        {
             m_inventory = GetComponent<Inventory>();
         }
 
