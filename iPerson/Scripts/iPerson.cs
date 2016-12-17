@@ -60,7 +60,8 @@ namespace TenPN.DecisionFlex.Demos
         //////////////////////////////////////////////////
 
         [Serializable]
-        struct AttributeParams {
+        struct AttributeParams
+        {
             [RangeAttribute(0.0f, 1.0f)]
             public float StartingValue;
             public float ChangePerSecond;
@@ -75,7 +76,8 @@ namespace TenPN.DecisionFlex.Demos
 
         //////////////////////////////////////////////////
 
-        void Awake() {
+        void Awake()
+        {
             values = new float[4];
             values[(int)Attribute.Fitness] = fitnessParams.StartingValue;
             values[(int)Attribute.Hunger] = hungerParams.StartingValue;
@@ -83,7 +85,8 @@ namespace TenPN.DecisionFlex.Demos
             values[(int)Attribute.Wealth] = wealthParams.StartingValue;
         }
 
-        void Update() {
+        void Update()
+        {
             UpdateAttribute(Attribute.Fitness, fitnessParams);
             UpdateAttribute(Attribute.Hunger, hungerParams);
             UpdateAttribute(Attribute.Thirst, thirstParams);
@@ -91,7 +94,8 @@ namespace TenPN.DecisionFlex.Demos
         }
 
         // decay/grow values, make sure don't go above 1/below 0
-        void UpdateAttribute(Attribute att, AttributeParams param) {
+        void UpdateAttribute(Attribute att, AttributeParams param)
+        {
             var newVal = values[(int)att] + param.ChangePerSecond * Time.deltaTime;
             values[(int)att] = Mathf.Clamp(newVal, 0f, 1f);
         }
