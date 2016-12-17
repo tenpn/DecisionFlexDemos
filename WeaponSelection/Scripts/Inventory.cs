@@ -23,7 +23,6 @@ THE SOFTWARE.
  */
 
 using UnityEngine;
-using System;
 using System.Reflection;
 using System.Collections.Generic;
 

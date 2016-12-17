@@ -23,7 +23,6 @@ THE SOFTWARE.
  */
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 // shows recent label next to soldier
 class WeaponLog : MonoBehaviour
