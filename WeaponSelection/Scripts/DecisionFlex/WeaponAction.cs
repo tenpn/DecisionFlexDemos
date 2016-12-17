@@ -25,13 +25,22 @@ using UnityEngine;
 
 namespace TenPN.DecisionFlex.Demos
 {
+    /** 
+        Does a gunshot, when chosen by DecisionFlex.
+    */
     [AddComponentMenu("TenPN/DecisionFlex/Demos/Weapon Selection/WeaponAction")]
     public class WeaponAction : Action
     {
+        /**
+           Gets the Enemy from the context, then shoots it
+        */
         public override void Perform(IContext context)
         {
+            // find the target
             var target = context.GetContext<GameObject>("Enemy");
+            // fires a "bullet" across the screen
             LabelLerper.LerpLabelFromTo(m_weaponVerb, transform.position, target.transform);
+            // make a note that we fired this gun
             transform.parent.parent.GetComponent<WeaponLog>().LogAction(gameObject.name);
         }
 
